@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import ArrivalPlan from "./pages/ArrivalPlan";
 import Guides from "./pages/Guides";
+import Business from "./pages/Business";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
     <Route path="/services" component={Services} />
     <Route path="/arrival-plan" component={ArrivalPlan} />
     <Route path="/guides" component={Guides} />
+    <Route path="/business" component={Business} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />
   </Switch>;

@@ -13,13 +13,15 @@ export default function SiteFooter() {
           <Link href="/" className="brand footer-brand" aria-label="ConvergeIST home">
             <img src="/manus-storage/convergeist-logo-mark_e24b7c42.png" alt="" className="brand-mark" />
             <span className="brand-wordmark">CONVERGE<span>IST</span></span>
+            <span className="brand-destination">China arrival routes</span>
             <span className="brand-route-gesture" aria-hidden="true"><i /><b /></span>
           </Link>
-          <p className="footer-intro">Peer-led arrival support for students making China their next chapter.</p>
+          <p className="footer-intro">A practical China partner for first arrivals, business visits, and the work that follows.</p>
         </section>
         <section className="footer-list">
           <p className="footer-label">Explore</p>
           <Link href="/services">Support by stage <ArrowUpRight size={14} /></Link>
+          <Link href="/business">Business visits &amp; shipping <ArrowUpRight size={14} /></Link>
           <Link href="/guides">Arrival guides <ArrowUpRight size={14} /></Link>
           <Link href="/arrival-plan">Start an arrival plan <ArrowUpRight size={14} /></Link>
         </section>

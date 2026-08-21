@@ -1,0 +1,3 @@
+/* Final arrival-notebook refinements for the business route. */
+.route-card-line{padding:18px 0 14px;font-size:17px;line-height:1.02}.route-card-line b{font-weight:400}.route-card-line small{font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:7px;letter-spacing:.08em;color:var(--jade)}
+.business-cta{background:var(--jade)}.business-cta:before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--cinnabar)}

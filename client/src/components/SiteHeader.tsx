@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const navItems = [
   { label: "The journey", href: "/#journey" },
   { label: "Support", href: "/services" },
+  { label: "Business visits", href: "/business" },
   { label: "Guides", href: "/guides" },
   { label: "About us", href: "/#about" },
 ];
@@ -32,6 +33,7 @@ export default function SiteHeader() {
         <Link href="/" className="brand" aria-label="ConvergeIST home">
           <img src="/manus-storage/convergeist-logo-mark_e24b7c42.png" alt="" className="brand-mark" />
           <span className="brand-wordmark">CONVERGE<span>IST</span></span>
+          <span className="brand-destination">China arrival routes</span>
           <span className="brand-route-gesture" aria-hidden="true"><i /><b /></span>
         </Link>
 
