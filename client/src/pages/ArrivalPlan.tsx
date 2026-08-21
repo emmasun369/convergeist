@@ -1,0 +1,61 @@
+/**
+ * Arrival Notebook design: a focused, low-stress intake route that treats a student's first message as the beginning of a clear plan.
+ */
+import { FormEvent, useState } from "react";
+import { Link } from "wouter";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, ChevronDown, Mail, MessageCircle, ShieldCheck } from "lucide-react";
+import { toast } from "sonner";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import SectionLabel from "@/components/SectionLabel";
+
+export default function ArrivalPlan() {
+  const [sent, setSent] = useState(false);
+  const [channel, setChannel] = useState("WhatsApp");
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    setSent(true);
+    toast.success("Your arrival note is ready to send.");
+  };
+  return <div className="page-shell plan-page">
+    <SiteHeader />
+    <main>
+      <section className="plan-top">
+        <div className="plan-intro">
+          <Link href="/" className="back-link"><ArrowLeft size={16} /> Home</Link>
+          <SectionLabel number="Arrival note">Start here</SectionLabel>
+          <h1>Tell us the part that feels <em>uncertain.</em></h1>
+          <p>Share a few details about where and when you are arriving. It gives the first conversation somewhere useful to begin.</p>
+          <div className="plan-benefits">
+            <div><CheckCircle2 size={18} /><span>We start with your actual timeline.</span></div>
+            <div><CheckCircle2 size={18} /><span>You choose the contact channel.</span></div>
+            <div><CheckCircle2 size={18} /><span>Support can be tailored to the gaps.</span></div>
+          </div>
+          <aside className="plan-privacy"><ShieldCheck size={19} /><p><strong>Your details stay practical.</strong> This draft intake is for planning the conversation. Do not include passport, visa, payment, or other sensitive details here.</p></aside>
+        </div>
+        <div className="plan-form-wrap">
+          {sent ? <div className="sent-card">
+            <span className="sent-icon"><CheckCircle2 size={29} /></span>
+            <p className="kicker">Arrival note saved</p>
+            <h2>You have made the first move.</h2>
+            <p>This static demo confirms the experience. Connect your preferred form or inbox next, and this submission can be routed directly to your team.</p>
+            <button className="button-dark" onClick={() => setSent(false)}>Write another note <ArrowUpRight size={17} /></button>
+          </div> : <form onSubmit={submit} className="arrival-form">
+            <div className="form-heading"><span>01</span><div><p className="kicker">Your arrival note</p><h2>Where should we begin?</h2></div></div>
+            <label>First name<input required placeholder="Your name" autoComplete="given-name" /></label>
+            <div className="form-two-up"><label>Email address<input type="email" required placeholder="you@example.com" autoComplete="email" /></label><label>Expected arrival<select required defaultValue=""><option value="" disabled>Select a timeframe</option><option>Within 2 weeks</option><option>Within 1 month</option><option>1–3 months away</option><option>Still planning</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
+            <div className="form-two-up"><label>City / university<input required placeholder="e.g. Wuhan" /></label><label>Getting in touch<select value={channel} onChange={(e) => setChannel(e.target.value)}><option>WhatsApp</option><option>Email</option><option>WeChat</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
+            <label>What would make your arrival easier?<textarea required rows={4} placeholder="Housing, airport arrival, local apps, food, getting to campus…" /></label>
+            <button className="button-dark form-submit" type="submit">Send my arrival note <ArrowUpRight size={17} /></button>
+          </form>}
+        </div>
+      </section>
+      <section className="plan-next">
+        <SectionLabel number="What happens next">The handoff</SectionLabel>
+        <div className="plan-next-grid"><h2>A short note becomes a clear next step.</h2><ol><li><span>01</span><p><strong>We read the route.</strong> Your city, timing, and priorities guide the conversation.</p></li><li><span>02</span><p><strong>We connect your way.</strong> The team reaches out through your chosen channel to understand what matters.</p></li><li><span>03</span><p><strong>You decide the support.</strong> Together, you discuss a realistic plan around the journey you need.</p></li></ol></div>
+        <div className="plan-contact-line"><p>Prefer to begin directly?</p><a href="mailto:hello@convergeist.com"><Mail size={16} /> Email the team</a><a href="#whatsapp"><MessageCircle size={16} /> Message on WhatsApp</a></div>
+      </section>
+    </main>
+    <SiteFooter />
+  </div>;
+}
