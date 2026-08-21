@@ -2,7 +2,10 @@
  * Business Route extends the Arrival Notebook system into a practical, trade-led
  * field guide for people visiting China to meet suppliers and coordinate shipping.
  */
-import { ArrowDownRight, ArrowUpRight, Building2, Check, ClipboardCheck, Factory, MapPin, PackageCheck, Route as RouteIcon, Ship, UsersRound } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowDownRight, ArrowUpRight, Building2, Check, ClipboardCheck, MapPin, PackageCheck, Route as RouteIcon, Ship, UsersRound } from "lucide-react";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SectionLabel from "@/components/SectionLabel";
@@ -44,8 +47,101 @@ const tradeNotes = [
 ];
 
 export default function Business() {
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const context = gsap.context(() => {
+      const select = gsap.utils.selector(page);
+      const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      heroTimeline
+        .from(select(".business-eyebrow"), { autoAlpha: 0, y: 16, duration: 0.5 })
+        .from(select(".business-hero h1"), { autoAlpha: 0, y: 28, duration: 0.8 }, "-=0.2")
+        .from(select(".business-hero-body"), { autoAlpha: 0, y: 18, duration: 0.55 }, "-=0.44")
+        .from(select(".business-hero-actions > *"), { autoAlpha: 0, y: 12, duration: 0.45, stagger: 0.1 }, "-=0.3")
+        .from(select(".business-hero-image"), { autoAlpha: 0, x: 34, scale: 0.985, duration: 0.9 }, "-=0.7")
+        .from(select(".business-route-card"), { autoAlpha: 0, y: 22, rotation: -5, duration: 0.62 }, "-=0.42")
+        .from(select(".business-city-note"), { autoAlpha: 0, x: 18, duration: 0.45 }, "-=0.34")
+        .from(select(".business-hero-route"), { autoAlpha: 0, duration: 0.35 }, "<")
+        .from(select(".business-hero-route i"), { scaleY: 0, transformOrigin: "top", duration: 0.8 }, "-=0.1")
+        .from(select(".business-hero-route b"), { scale: 0.5, autoAlpha: 0, duration: 0.28 }, "-=0.45");
+
+      gsap.to(select(".business-hero-image"), {
+        yPercent: 7,
+        ease: "none",
+        scrollTrigger: { trigger: select(".business-hero")[0], start: "top top", end: "bottom top", scrub: 0.55 },
+      });
+      gsap.to(select(".business-route-card"), {
+        y: -22,
+        ease: "none",
+        scrollTrigger: { trigger: select(".business-hero")[0], start: "top top", end: "bottom top", scrub: 0.7 },
+      });
+
+      const revealSection = (sectionSelector: string, targets: string, y = 28) => {
+        const section = select(sectionSelector)[0];
+        const nodes = select(targets);
+        if (!section || !nodes.length) return;
+        gsap.from(nodes, {
+          y,
+          duration: 0.65,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: section, start: "top 77%", once: true },
+        });
+      };
+
+      revealSection(".business-intro", ".business-intro-rail, .business-intro-main > *, .business-intro-note");
+      const introRail = select(".business-intro-rail i")[0];
+      if (introRail) gsap.fromTo(introRail, { scaleY: 0 }, { scaleY: 1, transformOrigin: "top", ease: "none", scrollTrigger: { trigger: ".business-intro", start: "top 76%", end: "bottom 55%", scrub: 0.45 } });
+
+      revealSection(".business-stages", ".business-stages-heading > *");
+      gsap.utils.toArray<HTMLElement>(select(".business-stage")).forEach((stage) => {
+        const rail = stage.querySelector(".business-stage-number i");
+        const icon = stage.querySelector(".business-stage-icon");
+        const copy = stage.querySelector(".business-stage-copy");
+        const checklist = stage.querySelector("ul");
+        const timeline = gsap.timeline({ scrollTrigger: { trigger: stage, start: "top 78%", once: true } });
+        timeline
+          .from(stage, { y: 24, duration: 0.58, ease: "power3.out" })
+          .from(icon, { scale: 0.82, rotation: -8, duration: 0.4, ease: "back.out(1.4)" }, "-=0.36")
+          .from([copy, checklist], { x: 16, duration: 0.45, stagger: 0.09, ease: "power2.out" }, "-=0.22");
+        if (rail) timeline.fromTo(rail, { scaleY: 0 }, { scaleY: 1, transformOrigin: "top", duration: 0.5, ease: "power1.out" }, 0.12);
+      });
+
+      const fieldImage = select(".field-note-image")[0];
+      const fieldCopy = select(".field-note-copy > *");
+      if (fieldImage) {
+        const fieldTimeline = gsap.timeline({ scrollTrigger: { trigger: ".business-field-note", start: "top 75%", once: true } });
+        fieldTimeline
+          .from(fieldImage, { y: 28, scale: 0.985, duration: 0.82, ease: "power3.inOut" })
+          .from(select(".field-note-stamp"), { y: 16, rotation: 0, duration: 0.38, ease: "power2.out" }, "-=0.28")
+          .from(fieldCopy, { y: 22, duration: 0.55, stagger: 0.1, ease: "power3.out" }, "-=0.48");
+      }
+
+      const shippingTimeline = gsap.timeline({ scrollTrigger: { trigger: ".business-shipping", start: "top 72%", once: true } });
+      shippingTimeline
+        .from(select(".shipping-copy > *"), { y: 22, duration: 0.58, stagger: 0.1, ease: "power3.out" })
+        .from(select(".shipping-board"), { x: 26, y: 16, rotation: 1.8, duration: 0.7, ease: "power3.out" }, "-=0.55")
+        .from(select(".shipping-board-items > div"), { x: 13, duration: 0.35, stagger: 0.09, ease: "power2.out" }, "-=0.32");
+      gsap.to(select(".shipping-board"), { y: -16, ease: "none", scrollTrigger: { trigger: ".business-shipping", start: "top bottom", end: "bottom top", scrub: 0.8 } });
+
+      revealSection(".business-clarity", ".clarity-mark, .business-clarity h2, .clarity-note");
+      const ctaTimeline = gsap.timeline({ scrollTrigger: { trigger: ".business-cta", start: "top 78%", once: true } });
+      ctaTimeline
+        .from(select(".business-cta .kicker, .business-cta h2"), { y: 24, duration: 0.62, stagger: 0.12, ease: "power3.out" })
+        .from(select(".business-cta-orb"), { scale: 0.88, rotation: -12, duration: 0.55, ease: "back.out(1.35)" }, "-=0.36")
+        .from(select(".business-cta-route"), { y: 12, duration: 0.25 }, "<");
+    }, page);
+
+    return () => context.revert();
+  }, []);
+
   return (
-    <div className="page-shell business-page">
+    <div ref={pageRef} className="page-shell business-page">
       <SiteHeader />
       <main>
         <section className="business-hero">
@@ -112,6 +208,7 @@ export default function Business() {
         </section>
 
         <section className="business-field-note">
+          <div className="field-note-route" aria-hidden="true"><span>04</span><i /><b /></div>
           <div className="field-note-image"><img src="https://images.unsplash.com/photo-1523726491678-bf852e717f6a?auto=format&fit=crop&w=1100&q=85" alt="Freight containers stacked in an active logistics yard" /><span className="field-note-stamp">Field note<br />03 / logistics</span></div>
           <div className="field-note-copy">
             <SectionLabel number="The work continues after the meeting">Leave with a useful line of sight</SectionLabel>
@@ -124,6 +221,7 @@ export default function Business() {
         </section>
 
         <section className="business-shipping" id="shipping">
+          <div className="shipping-route-guide" aria-hidden="true"><span>05</span><i /><b>HANDOFF / FOLLOW UP</b></div>
           <div className="shipping-copy">
             <SectionLabel number="A handoff should not feel like a black box">From visit to vessel</SectionLabel>
             <h2>Give every shipment a <em>clearer beginning.</em></h2>
@@ -143,7 +241,7 @@ export default function Business() {
 
         <section className="business-clarity">
           <div className="clarity-mark"><UsersRound size={22} /></div>
-          <div><p className="kicker">A clear lane for each partner</p><h2>Local context, practical coordination, and a <em>straight answer</em> about what comes next.</h2></div>
+          <div><p className="kicker">06 · 后续 / Follow up</p><h2>Local context, practical coordination, and a <em>straight answer</em> about what comes next.</h2></div>
           <p className="clarity-note">ConvergeIST supports informed visits and organized handoffs. Formal importing, customs clearance, contracts, cargo insurance, and regulatory advice should be handled by appropriately qualified providers.</p>
         </section>
 
