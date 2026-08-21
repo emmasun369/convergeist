@@ -6,6 +6,8 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDownRight, ArrowUpRight, Building2, Check, ClipboardCheck, MapPin, PackageCheck, Route as RouteIcon, Ship, UsersRound } from "lucide-react";
+import BusinessBriefForm from "@/components/BusinessBriefForm";
+import SourcingHubMap from "@/components/SourcingHubMap";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SectionLabel from "@/components/SectionLabel";
@@ -104,12 +106,20 @@ export default function Business() {
         const icon = stage.querySelector(".business-stage-icon");
         const copy = stage.querySelector(".business-stage-copy");
         const checklist = stage.querySelector("ul");
-        const timeline = gsap.timeline({ scrollTrigger: { trigger: stage, start: "top 78%", once: true } });
-        timeline
-          .from(stage, { y: 24, duration: 0.58, ease: "power3.out" })
-          .from(icon, { scale: 0.82, rotation: -8, duration: 0.4, ease: "back.out(1.4)" }, "-=0.36")
-          .from([copy, checklist], { x: 16, duration: 0.45, stagger: 0.09, ease: "power2.out" }, "-=0.22");
-        if (rail) timeline.fromTo(rail, { scaleY: 0 }, { scaleY: 1, transformOrigin: "top", duration: 0.5, ease: "power1.out" }, 0.12);
+        ScrollTrigger.create({
+          trigger: stage,
+          start: "top 78%",
+          once: true,
+          onEnter: () => {
+            const timeline = gsap.timeline();
+            timeline
+              .from(stage, { y: 24, duration: 0.58, ease: "power3.out" })
+              .from(icon, { scale: 0.82, rotation: -8, duration: 0.4, ease: "back.out(1.4)" }, "-=0.36");
+            if (copy) timeline.from(copy, { x: 16, duration: 0.45, ease: "power2.out" }, "-=0.22");
+            if (checklist) timeline.from(checklist, { x: 16, duration: 0.45, ease: "power2.out" }, "-=0.35");
+            if (rail) timeline.fromTo(rail, { scaleY: 0 }, { scaleY: 1, transformOrigin: "top", duration: 0.5, ease: "power1.out" }, 0.12);
+          },
+        });
       });
 
       const fieldImage = select(".field-note-image")[0];
@@ -129,7 +139,9 @@ export default function Business() {
         .from(select(".shipping-board-items > div"), { x: 13, duration: 0.35, stagger: 0.09, ease: "power2.out" }, "-=0.32");
       gsap.to(select(".shipping-board"), { y: -16, ease: "none", scrollTrigger: { trigger: ".business-shipping", start: "top bottom", end: "bottom top", scrub: 0.8 } });
 
+      revealSection(".business-hubs", ".business-hubs-heading > *, .hub-map-shell");
       revealSection(".business-clarity", ".clarity-mark, .business-clarity h2, .clarity-note");
+      revealSection(".business-brief", ".business-brief-head > *, .brief-panel");
       const ctaTimeline = gsap.timeline({ scrollTrigger: { trigger: ".business-cta", start: "top 78%", once: true } });
       ctaTimeline
         .from(select(".business-cta .kicker, .business-cta h2"), { y: 24, duration: 0.62, stagger: 0.12, ease: "power3.out" })
@@ -209,7 +221,7 @@ export default function Business() {
 
         <section className="business-field-note">
           <div className="field-note-route" aria-hidden="true"><span>04</span><i /><b /></div>
-          <div className="field-note-image"><img src="https://images.unsplash.com/photo-1523726491678-bf852e717f6a?auto=format&fit=crop&w=1100&q=85" alt="Freight containers stacked in an active logistics yard" /><span className="field-note-stamp">Field note<br />03 / logistics</span></div>
+            <div className="field-note-image"><img src="https://images.unsplash.com/photo-1523726491678-bf852e717f6a?auto=format&fit=crop&w=1100&q=85" alt="Freight containers stacked in an active logistics yard" /><span className="field-note-stamp">工厂笔记<br />03 / fieldwork</span></div>
           <div className="field-note-copy">
             <SectionLabel number="The work continues after the meeting">Leave with a useful line of sight</SectionLabel>
             <h2>The right visit gives you more than business cards.</h2>
@@ -229,7 +241,7 @@ export default function Business() {
             <a href="mailto:hello@convergeist.com?subject=Business%20visit%20and%20shipping%20inquiry" className="text-arrow-link">Ask about your route <ArrowUpRight size={18} /></a>
           </div>
           <div className="shipping-board" aria-label="Shipping handoff checklist">
-            <div className="shipping-board-top"><PackageCheck size={20} /><span>Shipment-ready notes</span><b>04</b></div>
+            <div className="shipping-board-top"><PackageCheck size={20} /><span>Shipment-ready notes · 发运交接</span><b>04</b></div>
             <div className="shipping-board-line"><span className="board-dot board-dot--jade" /><i /><span className="board-dot board-dot--cinnabar" /></div>
             <div className="shipping-board-items">
               <div><span>01</span><p><strong>Goods</strong> Sample or production status, quantities, and packaging.</p></div>
@@ -239,10 +251,21 @@ export default function Business() {
           </div>
         </section>
 
+        <section className="business-hubs" id="sourcing-hubs">
+          <div className="business-hubs-route" aria-hidden="true"><span>05</span><i /><b /></div>
+          <div className="business-hubs-heading"><SectionLabel number="A route gets clearer when the cities are visible">China sourcing hubs</SectionLabel><h2>Choose the city that gives your visit its <em>working context.</em></h2><p>Explore four practical starting points. The map is not a recommendation—it is a way to begin making the visit specific.</p></div>
+          <div className="hub-map-shell"><SourcingHubMap /></div>
+        </section>
+
         <section className="business-clarity">
           <div className="clarity-mark"><UsersRound size={22} /></div>
           <div><p className="kicker">06 · 后续 / Follow up</p><h2>Local context, practical coordination, and a <em>straight answer</em> about what comes next.</h2></div>
           <p className="clarity-note">ConvergeIST supports informed visits and organized handoffs. Formal importing, customs clearance, contracts, cargo insurance, and regulatory advice should be handled by appropriately qualified providers.</p>
+        </section>
+
+        <section className="business-brief" id="business-brief">
+          <div className="business-brief-head"><SectionLabel number="Turn the next question into a route note">Start a business brief</SectionLabel><h2>Begin with the part that needs a <em>clearer answer.</em></h2><p>Three short steps are enough to outline the visit, the work, and the handoff you want to make easier.</p></div>
+          <div className="brief-panel"><BusinessBriefForm /></div>
         </section>
 
         <section className="business-cta" id="contact">

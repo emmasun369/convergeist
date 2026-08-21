@@ -86,3 +86,5 @@ The wordmark is a custom-feeling **CONVERGEIST** setting with a small travelling
 ## Style Decisions
 
 Business-visitor pages remain part of the same **ConvergeIST arrival-route system**: use the language of route, handoff, landing, field note, and what comes next rather than presenting a separate logistics-consultancy identity. Images should feel like candid arrival documentation from China—meetings, notes, transit, supplier context, and practical paperwork—not generic corporate imagery or playful visual metaphors. **Converge Jade** remains the dominant memory color; cinnabar is reserved for stamps, station dots, warnings, and final arrival emphasis.
+
+The business experience should feel like a prepared **China arrival packet**. Repeat bilingual micro-annotations, field-note labels, document-card overlaps, and the travelling-dot mark at practical decision points. Keep Cinnabar for stamps and stations; use jade for the directional surfaces that carry the route forward.
