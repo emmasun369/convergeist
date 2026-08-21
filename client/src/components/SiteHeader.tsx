@@ -32,6 +32,7 @@ export default function SiteHeader() {
         <Link href="/" className="brand" aria-label="ConvergeIST home">
           <img src="/manus-storage/convergeist-logo-mark_e24b7c42.png" alt="" className="brand-mark" />
           <span className="brand-wordmark">CONVERGE<span>IST</span></span>
+          <span className="brand-route-gesture" aria-hidden="true"><i /><b /></span>
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -42,7 +43,7 @@ export default function SiteHeader() {
 
         <div className="header-actions">
           <Link href="/arrival-plan" className="header-cta">
-            Start your plan <ArrowUpRight size={15} strokeWidth={2.2} />
+            <span className="cta-station" aria-hidden="true" />Start your plan <ArrowUpRight size={15} strokeWidth={2.2} />
           </Link>
           <button className="mobile-menu-button" onClick={() => setOpen(!open)} aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open}>
             {open ? <X size={22} /> : <Menu size={22} />}

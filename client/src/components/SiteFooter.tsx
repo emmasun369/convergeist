@@ -13,6 +13,7 @@ export default function SiteFooter() {
           <Link href="/" className="brand footer-brand" aria-label="ConvergeIST home">
             <img src="/manus-storage/convergeist-logo-mark_e24b7c42.png" alt="" className="brand-mark" />
             <span className="brand-wordmark">CONVERGE<span>IST</span></span>
+            <span className="brand-route-gesture" aria-hidden="true"><i /><b /></span>
           </Link>
           <p className="footer-intro">Peer-led arrival support for students making China their next chapter.</p>
         </section>

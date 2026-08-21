@@ -1,6 +1,7 @@
 /**
  * Arrival Notebook design: resource content is presented as a collectible set of travel notes rather than a generic blog grid.
  */
+import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, ArrowUpRight, Bookmark, Clock3, Compass, Download, Map, Sparkles } from "lucide-react";
 import { toast } from "sonner";
@@ -15,12 +16,31 @@ const guides = [
 ];
 
 export default function Guides() {
-  return <div className="page-shell guides-page">
+  const pageRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const page = pageRef.current;
+    if (!page || window.matchMedia("(prefers-reduced-motion: reduce)").matches || !window.matchMedia("(pointer: fine)").matches) return;
+    const cards = Array.from(page.querySelectorAll<HTMLElement>(".guide-card"));
+    const cleanup = cards.map((card) => {
+      const move = (event: PointerEvent) => {
+        const bounds = card.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        card.style.transform = `translateY(-7px) perspective(650px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+      };
+      const leave = () => { card.style.transform = ""; };
+      card.addEventListener("pointermove", move);
+      card.addEventListener("pointerleave", leave);
+      return () => { card.removeEventListener("pointermove", move); card.removeEventListener("pointerleave", leave); };
+    });
+    return () => cleanup.forEach((remove) => remove());
+  }, []);
+  return <div ref={pageRef} className="page-shell guides-page">
     <SiteHeader />
     <main>
       <section className="page-masthead guides-masthead">
         <div className="masthead-aside"><span>Field notes</span><div className="masthead-rule" /></div>
-        <div className="masthead-main"><Link href="/" className="back-link"><ArrowLeft size={16} /> Home</Link><SectionLabel number="Notes to take with you">Guides</SectionLabel><h1>Keep the useful bits <em>close.</em></h1><p className="lead-copy">Short, thoughtful field notes for the practical moments that make a new country feel less distant.</p></div>
+        <div className="masthead-main"><Link href="/" className="back-link"><ArrowLeft size={16} /> Home</Link><SectionLabel number="Notes to take with you">Guides</SectionLabel><h1>Keep the useful bits <em>close.</em></h1><p className="lead-copy">Short, thoughtful field notes for the practical moments that make a new country feel less distant.</p><p className="guide-margin-note"><span>指南</span> A small guide for finding your way.</p></div>
       </section>
       <section className="guides-featured">
         <div className="featured-image"><img src="/manus-storage/convergeist-city-navigation_ae0c114e.jpg" alt="A map, phone and transit tools prepared on a desk" /><span className="image-stamp">Saved<br />for later</span></div>

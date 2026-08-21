@@ -12,10 +12,16 @@ import SectionLabel from "@/components/SectionLabel";
 export default function ArrivalPlan() {
   const [sent, setSent] = useState(false);
   const [channel, setChannel] = useState("WhatsApp");
+  const [completion, setCompletion] = useState(0);
   const submit = (event: FormEvent) => {
     event.preventDefault();
     setSent(true);
     toast.success("Your arrival note is ready to send.");
+  };
+  const updateProgress = (event: FormEvent<HTMLFormElement>) => {
+    const fields = Array.from(event.currentTarget.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("[data-progress]"));
+    const answered = fields.filter((field) => field.value.trim().length > 0).length;
+    setCompletion(Math.round((answered / fields.length) * 100));
   };
   return <div className="page-shell plan-page">
     <SiteHeader />
@@ -40,12 +46,14 @@ export default function ArrivalPlan() {
             <h2>You have made the first move.</h2>
             <p>This static demo confirms the experience. Connect your preferred form or inbox next, and this submission can be routed directly to your team.</p>
             <button className="button-dark" onClick={() => setSent(false)}>Write another note <ArrowUpRight size={17} /></button>
-          </div> : <form onSubmit={submit} className="arrival-form">
-            <div className="form-heading"><span>01</span><div><p className="kicker">Your arrival note</p><h2>Where should we begin?</h2></div></div>
-            <label>First name<input required placeholder="Your name" autoComplete="given-name" /></label>
-            <div className="form-two-up"><label>Email address<input type="email" required placeholder="you@example.com" autoComplete="email" /></label><label>Expected arrival<select required defaultValue=""><option value="" disabled>Select a timeframe</option><option>Within 2 weeks</option><option>Within 1 month</option><option>1–3 months away</option><option>Still planning</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
-            <div className="form-two-up"><label>City / university<input required placeholder="e.g. Wuhan" /></label><label>Getting in touch<select value={channel} onChange={(e) => setChannel(e.target.value)}><option>WhatsApp</option><option>Email</option><option>WeChat</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
-            <label>What would make your arrival easier?<textarea required rows={4} placeholder="Housing, airport arrival, local apps, food, getting to campus…" /></label>
+          </div> : <form onSubmit={submit} onInput={updateProgress} onChange={updateProgress} className="arrival-form">
+            <div className="form-heading"><span>01</span><div><p className="kicker">Your arrival note · 抵达卡</p><h2>Where should we begin?</h2></div></div>
+            <div className="form-route-progress" aria-hidden="true"><div><i style={{ transform: `scaleX(${completion / 100})` }} /></div><span>{completion}% mapped</span></div>
+            <p className="form-station-note"><span>下一站</span> Your next station begins with a few practical details.</p>
+            <label>First name<input data-progress required placeholder="Your name" autoComplete="given-name" /></label>
+            <div className="form-two-up"><label>Email address<input data-progress type="email" required placeholder="you@example.com" autoComplete="email" /></label><label>Expected arrival<select data-progress required defaultValue=""><option value="" disabled>Select a timeframe</option><option>Within 2 weeks</option><option>Within 1 month</option><option>1–3 months away</option><option>Still planning</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
+            <div className="form-two-up"><label>City / university<input data-progress required placeholder="e.g. Wuhan" /></label><label>Getting in touch<select data-progress value={channel} onChange={(e) => setChannel(e.target.value)}><option>WhatsApp</option><option>Email</option><option>WeChat</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
+            <label>What would make your arrival easier?<textarea data-progress required rows={4} placeholder="Housing, airport arrival, local apps, food, getting to campus…" /></label>
             <button className="button-dark form-submit" type="submit">Send my arrival note <ArrowUpRight size={17} /></button>
           </form>}
         </div>

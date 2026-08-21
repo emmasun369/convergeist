@@ -9,19 +9,19 @@ import SectionLabel from "@/components/SectionLabel";
 
 const stages = [
   {
-    mark: "01", icon: <PlaneLanding size={22} />, eyebrow: "Before you fly", title: "Land with a plan, not a hundred tabs open.",
+    mark: "01", icon: <PlaneLanding size={22} />, eyebrow: "Before you fly · 出发前", title: "Land with a plan, not a hundred tabs open.",
     body: "We help you turn arrival questions into a workable checklist before your departure date gets close.",
     items: ["Accommodation options matched to campus and budget", "Temporary stay planning for early arrivals", "Arrival-day schedule and transport coordination"],
     image: "/manus-storage/convergeist-housing_ba625beb.jpg", caption: "A room should feel checked, clear, and close enough."
   },
   {
-    mark: "02", icon: <MapPin size={22} />, eyebrow: "Landing day", title: "A calm route from arrivals to your first door.",
+    mark: "02", icon: <MapPin size={22} />, eyebrow: "Landing day · 抵达日", title: "A calm route from arrivals to your first door.",
     body: "Get a clear sequence for the moments when a dead battery and unfamiliar signs feel much bigger than they are.",
     items: ["Airport pickup and onward transport planning", "Local transit, Didi, and map orientation", "A first-meal and essential-stop game plan"],
     image: "/manus-storage/convergeist-arrival-transport_1cf09e56.jpg", caption: "One familiar face can change the whole first evening."
   },
   {
-    mark: "03", icon: <Smartphone size={22} />, eyebrow: "Your first week", title: "Turn a new city into an everyday routine.",
+    mark: "03", icon: <Smartphone size={22} />, eyebrow: "Your first week · 第一周", title: "Turn a new city into an everyday routine.",
     body: "The practical details get easier when you know the right local tools, phrases, and places to begin.",
     items: ["Essential local-app and mobile setup guidance", "Food, payment, and currency-exchange orientation", "Cultural familiarisation and community connections"],
     image: "/manus-storage/convergeist-city-navigation_ae0c114e.jpg", caption: "The details that make a city feel usable."

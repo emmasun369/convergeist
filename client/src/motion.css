@@ -1,0 +1,38 @@
+/* Arrival Notebook motion: route-led dimensional accents remain quiet, optional, and subservient to readable editorial content. */
+.hero-ribbon { position:absolute; inset:-14% -21% -12% -27%; z-index:0; pointer-events:none; opacity:.86; mix-blend-mode:screen; }
+.hero-ribbon canvas { width:100%!important; height:100%!important; }
+.hero-image-frame { z-index:1; }
+.hero-note { z-index:2; }
+
+.brand-route-gesture { width:23px; height:12px; position:relative; display:inline-block; margin-left:1px; opacity:.94; }
+.brand-route-gesture i { position:absolute; left:0; right:3px; top:6px; border-top:1px solid currentColor; transform:rotate(-17deg); transform-origin:left; opacity:.54; }
+.brand-route-gesture b { position:absolute; right:0; top:2px; width:7px; height:7px; border-radius:50%; background:var(--cinnabar); box-shadow:0 0 0 2px var(--paper); }
+.footer-brand .brand-route-gesture b { box-shadow:0 0 0 2px var(--ink); }
+.cta-station { width:6px; height:6px; border-radius:50%; background:#f3c1ad; box-shadow:0 0 0 3px rgba(243,193,173,.18); }
+
+.journey-item { transition:background .3s var(--ease-out), transform .3s var(--ease-out); }
+.journey-item.motion-active { background:linear-gradient(90deg, rgba(212,230,223,.4), transparent 75%); }
+.journey-no { position:relative; }
+.journey-draw { position:absolute; left:4px; top:44px; bottom:0; border-left:1px solid var(--cinnabar); transform-origin:top; }
+.journey-icon { transition:transform .3s var(--ease-out), background .3s var(--ease-out), color .3s var(--ease-out); }
+.journey-item.motion-active .journey-icon { background:var(--jade); color:white; transform:scale(1.1); }
+
+.welcome-characters span { display:inline-block; margin-top:0; font:inherit; color:inherit; letter-spacing:inherit; text-transform:none; }
+.welcome-left > span { display:block; font-size:10px; text-transform:uppercase; letter-spacing:.17em; color:#a6cfbf; font-weight:800; margin-top:22px; }
+
+.form-heading { margin-bottom:19px; }
+.form-route-progress { display:flex; align-items:center; gap:9px; margin:0 0 23px; }
+.form-route-progress > div { height:2px; flex:1; background:#e6e2d9; overflow:hidden; }
+.form-route-progress i { display:block; width:100%; height:100%; background:var(--jade); transform-origin:left; transition:transform .35s var(--ease-out); }
+.form-route-progress span { font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:var(--cinnabar); white-space:nowrap; }
+.form-station-note { display:flex; align-items:baseline; gap:8px; margin:-6px 0 19px; padding:8px 10px; background:rgba(212,230,223,.4); border-left:2px solid var(--jade); color:var(--ink-soft); font-size:10px; line-height:1.45; }
+.form-station-note span { color:var(--cinnabar); font-family:var(--serif); font-size:15px; }
+
+.guide-margin-note { display:flex; align-items:center; gap:10px; margin:25px 0 0; color:var(--ink-soft); font-size:11px; font-weight:700; }
+.guide-margin-note::before { content:""; width:31px; border-top:1px solid var(--cinnabar); }
+.guide-margin-note span { font-family:var(--serif); color:var(--cinnabar); font-size:19px; font-weight:400; }
+
+.guide-card { transform-style:preserve-3d; will-change:transform; }
+
+@media (max-width:700px) { .hero-ribbon { display:none; } }
+@media (prefers-reduced-motion:reduce) { .hero-ribbon { display:none; } .journey-draw { transform:scaleY(1)!important; } }
