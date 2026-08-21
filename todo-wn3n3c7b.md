@@ -12,3 +12,8 @@
 - [x] Build the interactive sourcing-hub map for Shenzhen, Guangzhou, Yiwu, and Shanghai.
 - [x] Apply the approved first-four-second story direction to the feature motion language.
 - [x] Verify the expanded Business Visits experience and prepare the final checkpoint.
+
+# Header Contrast Refinement
+
+- [x] Apply the light, opaque header treatment from initial page load.
+- [x] Verify desktop and mobile header contrast against the hero background.
