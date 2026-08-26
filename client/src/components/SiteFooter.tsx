@@ -2,7 +2,7 @@
  * Arrival Notebook design: the footer closes the route with a quiet, paper-and-ink sign-off and clear exits.
  */
 import { Link } from "wouter";
-import { ArrowUpRight, Instagram, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Instagram, Mail, MessageCircle, Phone } from "lucide-react";
 
 export default function SiteFooter() {
   return (
@@ -27,9 +27,10 @@ export default function SiteFooter() {
         </section>
         <section className="footer-list">
           <p className="footer-label">Connect</p>
-          <a href="mailto:hello@convergeist.com"><Mail size={14} /> Email the team</a>
-          <a href="#contact"><MessageCircle size={14} /> Send a message</a>
-          <a href="#instagram"><Instagram size={14} /> Follow the journey</a>
+          <a href="mailto:success@airweber.tech"><Mail size={14} /> success@airweber.tech</a>
+          <a href="tel:+447754285455"><Phone size={14} /> +44 7754 285 455</a>
+          <a href="https://wa.me/447754285455" target="_blank" rel="noreferrer"><MessageCircle size={14} /> Send a WhatsApp message</a>
+          <a href="https://www.instagram.com/convergeist/" target="_blank" rel="noreferrer"><Instagram size={14} /> Follow @convergeist</a>
         </section>
       </div>
       <div className="footer-bottom">

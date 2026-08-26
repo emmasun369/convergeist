@@ -31,3 +31,8 @@
 - [x] Add skip navigation, visible focus styles, and keyboard-complete mobile menu behavior.
 - [x] Optimize Business Visits motion hierarchy and background/text contrast.
 - [x] Verify the upgraded routes across desktop, mobile, keyboard, and reduced-motion states.
+
+# Public Contact Details
+
+- [x] Replace all public email, phone, and Instagram placeholders with the supplied ConvergeIST details.
+- [x] Verify the updated contact links and save the change.

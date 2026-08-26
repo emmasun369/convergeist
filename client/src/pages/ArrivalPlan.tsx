@@ -62,7 +62,7 @@ export default function ArrivalPlan() {
       <section className="plan-next">
         <SectionLabel number="What happens next">The handoff</SectionLabel>
         <div className="plan-next-grid"><h2>A short note becomes a clear next step.</h2><ol><li><span>01</span><p><strong>We read the route.</strong> Your city, timing, and priorities guide the conversation.</p></li><li><span>02</span><p><strong>We connect your way.</strong> The team reaches out through your chosen channel to understand what matters.</p></li><li><span>03</span><p><strong>You decide the support.</strong> Together, you discuss a realistic plan around the journey you need.</p></li></ol></div>
-        <div className="plan-contact-line"><p>Prefer to begin directly?</p><a href="mailto:hello@convergeist.com"><Mail size={16} /> Email the team</a><a href="#whatsapp"><MessageCircle size={16} /> Message on WhatsApp</a></div>
+        <div className="plan-contact-line"><p>Prefer to begin directly?</p><a href="mailto:success@airweber.tech"><Mail size={16} /> Email the team</a><a href="https://wa.me/447754285455" target="_blank" rel="noreferrer"><MessageCircle size={16} /> Message on WhatsApp</a></div>
       </section>
     </main>
     <SiteFooter />

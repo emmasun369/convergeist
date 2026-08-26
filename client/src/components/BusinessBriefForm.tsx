@@ -23,7 +23,7 @@ export default function BusinessBriefForm() {
     setErrors(nextErrors); return Object.keys(nextErrors).length === 0;
   };
   const next = () => { if (validate()) setStep((current) => Math.min(current + 1, 3)); };
-  const mailto = `mailto:hello@convergeist.com?subject=${encodeURIComponent("Business visit route note")}&body=${encodeURIComponent(`Name: ${brief.name}\nTravel window: ${brief.travelWindow}\nStarting hub: ${brief.city}\nFocus: ${brief.focus}\nHandoff stage: ${brief.stage}\nNotes: ${brief.notes || "—"}`)}`;
+  const mailto = `mailto:success@airweber.tech?subject=${encodeURIComponent("Business visit route note")}&body=${encodeURIComponent(`Name: ${brief.name}\nTravel window: ${brief.travelWindow}\nStarting hub: ${brief.city}\nFocus: ${brief.focus}\nHandoff stage: ${brief.stage}\nNotes: ${brief.notes || "—"}`)}`;
   const submit = (event: FormEvent) => { event.preventDefault(); if (!validate()) return; setSent(true); toast.success("Your business brief is ready to send.", { description: "Review the route note, then email it to the ConvergeIST team." }); };
   const summary = [brief.travelWindow, brief.city, brief.focus, brief.stage].filter(Boolean).join(" · ");
 

@@ -238,7 +238,7 @@ export default function Business() {
             <SectionLabel number="A handoff should not feel like a black box">From visit to vessel</SectionLabel>
             <h2>Give every shipment a <em>clearer beginning.</em></h2>
             <p>Whether you are moving samples or a first production run, the useful work starts with shared detail. We can help you prepare the handoff conversation so your supplier, freight partner, and internal team are working from the same page.</p>
-            <a href="mailto:hello@convergeist.com?subject=Business%20visit%20and%20shipping%20inquiry" className="text-arrow-link">Ask about your route <ArrowUpRight size={18} /></a>
+            <a href="mailto:success@airweber.tech?subject=Business%20visit%20and%20shipping%20inquiry" className="text-arrow-link">Ask about your route <ArrowUpRight size={18} /></a>
           </div>
           <div className="shipping-board" aria-label="Shipping handoff checklist">
             <div className="shipping-board-top"><PackageCheck size={20} /><span>Shipment-ready notes · 发运交接</span><b>04</b></div>
@@ -271,7 +271,7 @@ export default function Business() {
         <section className="business-cta" id="contact">
           <div className="business-cta-route" aria-hidden="true"><i /><span /></div>
           <div><p className="kicker">Start with the business question in front of you</p><h2>Tell us what you need China to <em>solve.</em></h2></div>
-          <a href="mailto:hello@convergeist.com?subject=Business%20visit%20inquiry" className="business-cta-orb"><span>Start a<br />business brief</span><ArrowUpRight size={24} /></a>
+          <a href="mailto:success@airweber.tech?subject=Business%20visit%20inquiry" className="business-cta-orb"><span>Start a<br />business brief</span><ArrowUpRight size={24} /></a>
         </section>
       </main>
       <SiteFooter />
