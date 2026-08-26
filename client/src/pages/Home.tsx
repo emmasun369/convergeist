@@ -50,7 +50,7 @@ export default function Home() {
 
   return <div ref={pageRef} className="page-shell home-page">
     <SiteHeader />
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="hero">
         <div className="hero-route" aria-hidden="true"><span className="route-dot route-dot--top" /><i /><span className="route-dot route-dot--bottom" /></div>
         <div className="hero-copy">

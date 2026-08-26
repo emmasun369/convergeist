@@ -25,7 +25,7 @@ export default function ArrivalPlan() {
   };
   return <div className="page-shell plan-page">
     <SiteHeader />
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="plan-top">
         <div className="plan-intro">
           <Link href="/" className="back-link"><ArrowLeft size={16} /> Home</Link>
@@ -38,6 +38,7 @@ export default function ArrivalPlan() {
             <div><CheckCircle2 size={18} /><span>Support can be tailored to the gaps.</span></div>
           </div>
           <aside className="plan-privacy"><ShieldCheck size={19} /><p><strong>Your details stay practical.</strong> This draft intake is for planning the conversation. Do not include passport, visa, payment, or other sensitive details here.</p></aside>
+          <aside className="plan-response-expectation"><span>What happens after you send</span><p><strong>We read your arrival route first.</strong> Your city, timing, and preferred contact method shape the next useful conversation—not an automated sales loop.</p></aside>
         </div>
         <div className="plan-form-wrap">
           {sent ? <div className="sent-card">

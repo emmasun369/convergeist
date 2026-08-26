@@ -37,7 +37,7 @@ export default function Guides() {
   }, []);
   return <div ref={pageRef} className="page-shell guides-page">
     <SiteHeader />
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="page-masthead guides-masthead">
         <div className="masthead-aside"><span>Field notes</span><div className="masthead-rule" /></div>
         <div className="masthead-main"><Link href="/" className="back-link"><ArrowLeft size={16} /> Home</Link><SectionLabel number="Notes to take with you">Guides</SectionLabel><h1>Keep the useful bits <em>close.</em></h1><p className="lead-copy">Short, thoughtful field notes for the practical moments that make a new country feel less distant.</p><p className="guide-margin-note"><span>指南</span> A small guide for finding your way.</p></div>

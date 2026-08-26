@@ -38,7 +38,7 @@ const faqs = [
 export default function Services() {
   return <div className="page-shell">
     <SiteHeader />
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="page-masthead services-masthead">
         <div className="masthead-aside"><span>Support map</span><div className="masthead-rule" /></div>
         <div className="masthead-main">

@@ -61,26 +61,21 @@ export default function Business() {
       const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       heroTimeline
-        .from(select(".business-eyebrow"), { autoAlpha: 0, y: 16, duration: 0.5 })
-        .from(select(".business-hero h1"), { autoAlpha: 0, y: 28, duration: 0.8 }, "-=0.2")
-        .from(select(".business-hero-body"), { autoAlpha: 0, y: 18, duration: 0.55 }, "-=0.44")
-        .from(select(".business-hero-actions > *"), { autoAlpha: 0, y: 12, duration: 0.45, stagger: 0.1 }, "-=0.3")
-        .from(select(".business-hero-image"), { autoAlpha: 0, x: 34, scale: 0.985, duration: 0.9 }, "-=0.7")
-        .from(select(".business-route-card"), { autoAlpha: 0, y: 22, rotation: -5, duration: 0.62 }, "-=0.42")
-        .from(select(".business-city-note"), { autoAlpha: 0, x: 18, duration: 0.45 }, "-=0.34")
-        .from(select(".business-hero-route"), { autoAlpha: 0, duration: 0.35 }, "<")
-        .from(select(".business-hero-route i"), { scaleY: 0, transformOrigin: "top", duration: 0.8 }, "-=0.1")
-        .from(select(".business-hero-route b"), { scale: 0.5, autoAlpha: 0, duration: 0.28 }, "-=0.45");
+        .from(select(".business-eyebrow"), { y: 14, duration: 0.42 })
+        .from(select(".business-hero h1"), { y: 24, duration: 0.72 }, "-=0.16")
+        .from(select(".business-hero-body, .business-outcomes"), { y: 16, duration: 0.48, stagger: 0.08 }, "-=0.36")
+        .from(select(".business-hero-actions > *"), { y: 10, duration: 0.4, stagger: 0.08 }, "-=0.28")
+        .from(select(".business-hero-image"), { x: 24, scale: 0.992, duration: 0.72 }, "-=0.62")
+        .from(select(".business-route-card"), { y: 16, rotation: -4, duration: 0.5 }, "-=0.34")
+        .from(select(".business-city-note"), { x: 14, duration: 0.38 }, "-=0.24")
+        .from(select(".business-hero-route i"), { scaleY: 0, transformOrigin: "top", duration: 0.64 }, "-=0.12")
+        .from(select(".business-hero-route b"), { scale: 0.75, duration: 0.22 }, "-=0.34");
 
-      gsap.to(select(".business-hero-image"), {
-        yPercent: 7,
-        ease: "none",
-        scrollTrigger: { trigger: select(".business-hero")[0], start: "top top", end: "bottom top", scrub: 0.55 },
-      });
-      gsap.to(select(".business-route-card"), {
-        y: -22,
-        ease: "none",
-        scrollTrigger: { trigger: select(".business-hero")[0], start: "top top", end: "bottom top", scrub: 0.7 },
+      ScrollTrigger.matchMedia({
+        "(min-width: 701px)": () => {
+          gsap.to(select(".business-hero-image"), { yPercent: 3, ease: "none", scrollTrigger: { trigger: select(".business-hero")[0], start: "top top", end: "bottom top", scrub: 0.45 } });
+          gsap.to(select(".business-route-card"), { y: -10, ease: "none", scrollTrigger: { trigger: select(".business-hero")[0], start: "top top", end: "bottom top", scrub: 0.55 } });
+        },
       });
 
       const revealSection = (sectionSelector: string, targets: string, y = 28) => {
@@ -155,7 +150,7 @@ export default function Business() {
   return (
     <div ref={pageRef} className="page-shell business-page">
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="business-hero">
           <div className="business-hero-route" aria-hidden="true"><span /><i /><b /><i /><span /></div>
           <div className="business-hero-copy">
@@ -165,6 +160,11 @@ export default function Business() {
             <div className="business-hero-actions">
               <a href="#plan" className="button-light">Plan a business visit <ArrowDownRight size={17} /></a>
               <a href="#shipping" className="business-quiet-link">Explore the shipping handoff <ArrowUpRight size={17} /></a>
+            </div>
+            <div className="business-outcomes" aria-label="What the business route is designed to provide">
+              <article className="business-outcome"><span>01</span><div><strong>Meeting sequence</strong><small>Who, where, and what matters first.</small></div></article>
+              <article className="business-outcome"><span>02</span><div><strong>Decision note</strong><small>Questions and context carried forward.</small></div></article>
+              <article className="business-outcome"><span>03</span><div><strong>Clear handoff</strong><small>People and paperwork ready for the next move.</small></div></article>
             </div>
           </div>
 
@@ -264,7 +264,7 @@ export default function Business() {
         </section>
 
         <section className="business-brief" id="business-brief">
-          <div className="business-brief-head"><SectionLabel number="Turn the next question into a route note">Start a business brief</SectionLabel><h2>Begin with the part that needs a <em>clearer answer.</em></h2><p>Three short steps are enough to outline the visit, the work, and the handoff you want to make easier.</p></div>
+          <div className="business-brief-head"><SectionLabel number="Turn the next question into a route note">Start a business brief</SectionLabel><h2>Begin with the part that needs a <em>clearer answer.</em></h2><p>Three short steps are enough to outline the visit, the work, and the handoff you want to make easier.</p><aside className="business-brief-response"><span>Response route · 回复路径</span><ol><li><p><strong>We read the route.</strong> Your city, timing, and question set the first useful context.</p></li><li><p><strong>You choose the channel.</strong> The next note can move through email or a direct conversation.</p></li><li><p><strong>Nothing is hidden.</strong> This intake prepares a clear brief, not an automatic sales funnel.</p></li></ol></aside></div>
           <div className="brief-panel"><BusinessBriefForm /></div>
         </section>
 

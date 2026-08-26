@@ -17,3 +17,17 @@
 
 - [x] Apply the light, opaque header treatment from initial page load.
 - [x] Verify desktop and mobile header contrast against the hero background.
+
+# UI/UX Pro Max Evaluation
+
+- [x] Review the referenced UI/UX Pro Max skill and extract its relevant audit criteria.
+- [x] Evaluate the current ConvergeIST routes against the audit criteria.
+- [x] Prepare a prioritized, implementation-ready website upgrade roadmap.
+
+# Prioritized Upgrade Implementation
+
+- [x] Create detailed wireframes for audience-specific conversion paths and the expanded business-brief journey.
+- [x] Implement route-aware primary actions, conversion proof, and business-brief response expectations.
+- [x] Add skip navigation, visible focus styles, and keyboard-complete mobile menu behavior.
+- [x] Optimize Business Visits motion hierarchy and background/text contrast.
+- [x] Verify the upgraded routes across desktop, mobile, keyboard, and reduced-motion states.
