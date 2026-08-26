@@ -155,10 +155,10 @@ export default function Business() {
           <div className="business-hero-route" aria-hidden="true"><span /><i /><b /><i /><span /></div>
           <div className="business-hero-copy">
             <p className="business-eyebrow"><span>商旅与贸易</span> Business travel &amp; trade, made navigable</p>
-            <h1>A China trip that moves your business <em>forward.</em></h1>
+            <h1>Business Travel &amp; Trade in China, <em>Made Less Confusing</em></h1>
             <p className="business-hero-body">For founders, buyers, and teams coming to China to source, visit, and ship. Built from the same ConvergeIST arrival-notebook mindset: make the route between your first meeting and your next decision more visible.</p>
             <div className="business-hero-actions">
-              <a href="#plan" className="button-light">Plan a business visit <ArrowDownRight size={17} /></a>
+              <a href="#business-brief" className="button-light">Plan a business visit <ArrowDownRight size={17} /></a>
               <a href="#shipping" className="business-quiet-link">Explore the shipping handoff <ArrowUpRight size={17} /></a>
             </div>
             <div className="business-outcomes" aria-label="What the business route is designed to provide">
@@ -271,7 +271,7 @@ export default function Business() {
         <section className="business-cta" id="contact">
           <div className="business-cta-route" aria-hidden="true"><i /><span /></div>
           <div><p className="kicker">Start with the business question in front of you</p><h2>Tell us what you need China to <em>solve.</em></h2></div>
-          <a href="mailto:success@airweber.tech?subject=Business%20visit%20inquiry" className="business-cta-orb"><span>Start a<br />business brief</span><ArrowUpRight size={24} /></a>
+          <a href="#business-brief" className="business-cta-orb"><span>Start a<br />business brief</span><ArrowUpRight size={24} /></a>
         </section>
       </main>
       <SiteFooter />

@@ -6,11 +6,11 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const navItems = [
-  { label: "The journey", href: "/#journey" },
+  { label: "The journey", href: "/#journey", native: true },
   { label: "Support", href: "/services" },
   { label: "Business visits", href: "/business" },
   { label: "Guides", href: "/guides" },
-  { label: "About us", href: "/#about" },
+  { label: "About us", href: "/#about", native: true },
 ];
 
 export default function SiteHeader() {
@@ -66,8 +66,10 @@ export default function SiteHeader() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => {
             const itemRoute = item.href.split("#")[0] || "/";
-            const current = itemRoute === location;
-            return <Link key={item.label} href={item.href} className="nav-link" aria-current={current ? "page" : undefined}>{item.label}</Link>;
+            const current = !item.native && itemRoute === location;
+            return item.native
+              ? <a key={item.label} href={item.href} className="nav-link">{item.label}</a>
+              : <Link key={item.label} href={item.href} className="nav-link" aria-current={current ? "page" : undefined}>{item.label}</Link>;
           })}
         </nav>
 
@@ -83,8 +85,11 @@ export default function SiteHeader() {
         <nav aria-label="Mobile navigation">
           {navItems.map((item, index) => {
             const itemRoute = item.href.split("#")[0] || "/";
-            const current = itemRoute === location;
-            return <Link ref={index === 0 ? firstMobileLinkRef : undefined} key={item.label} href={item.href} className="mobile-nav-link" aria-current={current ? "page" : undefined}><span className="route-number">0{index + 1}</span>{item.label}<ArrowUpRight size={18} /></Link>;
+            const current = !item.native && itemRoute === location;
+            const content = <><span className="route-number">0{index + 1}</span>{item.label}<ArrowUpRight size={18} /></>;
+            return item.native
+              ? <a ref={index === 0 ? firstMobileLinkRef : undefined} key={item.label} href={item.href} className="mobile-nav-link">{content}</a>
+              : <Link ref={index === 0 ? firstMobileLinkRef : undefined} key={item.label} href={item.href} className="mobile-nav-link" aria-current={current ? "page" : undefined}>{content}</Link>;
           })}
           {isBusinessRoute ? <a href="#business-brief" className="mobile-nav-plan">Plan a business visit <ArrowUpRight size={18} /></a> : <Link href="/arrival-plan" className="mobile-nav-plan">Map my arrival <ArrowUpRight size={18} /></Link>}
         </nav>

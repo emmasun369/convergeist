@@ -36,3 +36,9 @@
 
 - [x] Replace all public email, phone, and Instagram placeholders with the supplied ConvergeIST details.
 - [x] Verify the updated contact links and save the change.
+
+# Headline & Route Wiring
+
+- [x] Update the Business Visits headline with the approved wording.
+- [x] Correct cross-page anchors and audience-specific conversion targets.
+- [x] Verify all registered routes and public navigation links before delivery.
