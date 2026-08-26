@@ -2,17 +2,21 @@
  * Arrival Notebook design: a focused, low-stress intake route that treats a student's first message as the beginning of a clear plan.
  */
 import { FormEvent, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ArrowLeft, ArrowUpRight, CheckCircle2, ChevronDown, Mail, MessageCircle, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SectionLabel from "@/components/SectionLabel";
+import { cityRouteBySlug } from "@/lib/cityRoutes";
 
 export default function ArrivalPlan() {
+  const [location] = useLocation();
+  const selectedCity = cityRouteBySlug(new URLSearchParams(window.location.search).get("city") ?? "", "arrival");
   const [sent, setSent] = useState(false);
   const [channel, setChannel] = useState("WhatsApp");
   const [completion, setCompletion] = useState(0);
+  const [city, setCity] = useState(selectedCity?.city ?? "");
   const submit = (event: FormEvent) => {
     event.preventDefault();
     setSent(true);
@@ -29,9 +33,9 @@ export default function ArrivalPlan() {
       <section className="plan-top">
         <div className="plan-intro">
           <Link href="/" className="back-link"><ArrowLeft size={16} /> Home</Link>
-          <SectionLabel number="Arrival note">Start here</SectionLabel>
+          <SectionLabel number={selectedCity ? `${selectedCity.chinese} · arrival note` : "Arrival note"}>Start here</SectionLabel>
           <h1>Tell us the part that feels <em>uncertain.</em></h1>
-          <p>Share a few details about where and when you are arriving. It gives the first conversation somewhere useful to begin.</p>
+          <p>{selectedCity ? `Your ${selectedCity.city} route is already in view. ` : ""}Share a few details about where and when you are arriving. It gives the first conversation somewhere useful to begin.</p>
           <div className="plan-benefits">
             <div><CheckCircle2 size={18} /><span>We start with your actual timeline.</span></div>
             <div><CheckCircle2 size={18} /><span>You choose the contact channel.</span></div>
@@ -48,12 +52,12 @@ export default function ArrivalPlan() {
             <p>This static demo confirms the experience. Connect your preferred form or inbox next, and this submission can be routed directly to your team.</p>
             <button className="button-dark" onClick={() => setSent(false)}>Write another note <ArrowUpRight size={17} /></button>
           </div> : <form onSubmit={submit} onInput={updateProgress} onChange={updateProgress} className="arrival-form">
-            <div className="form-heading"><span>01</span><div><p className="kicker">Your arrival note · 抵达卡</p><h2>Where should we begin?</h2></div></div>
+            <div className="form-heading"><span>01</span><div><p className="kicker">Your arrival note · 抵达卡</p><h2>{selectedCity ? `${selectedCity.city} is your first route.` : "Where should we begin?"}</h2></div></div>
             <div className="form-route-progress" aria-hidden="true"><div><i style={{ transform: `scaleX(${completion / 100})` }} /></div><span>{completion}% mapped</span></div>
             <p className="form-station-note"><span>下一站</span> Your next station begins with a few practical details.</p>
             <label>First name<input data-progress required placeholder="Your name" autoComplete="given-name" /></label>
             <div className="form-two-up"><label>Email address<input data-progress type="email" required placeholder="you@example.com" autoComplete="email" /></label><label>Expected arrival<select data-progress required defaultValue=""><option value="" disabled>Select a timeframe</option><option>Within 2 weeks</option><option>Within 1 month</option><option>1–3 months away</option><option>Still planning</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
-            <div className="form-two-up"><label>City / university<input data-progress required placeholder="e.g. Wuhan" /></label><label>Getting in touch<select data-progress value={channel} onChange={(e) => setChannel(e.target.value)}><option>WhatsApp</option><option>Email</option><option>WeChat</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
+            <div className="form-two-up"><label>City / university<input data-progress required placeholder="e.g. Wuhan" value={city} onChange={(event) => setCity(event.target.value)} /></label><label>Getting in touch<select data-progress value={channel} onChange={(e) => setChannel(e.target.value)}><option>WhatsApp</option><option>Email</option><option>WeChat</option></select><ChevronDown className="select-chevron" size={16} /></label></div>
             <label>What would make your arrival easier?<textarea data-progress required rows={4} placeholder="Housing, airport arrival, local apps, food, getting to campus…" /></label>
             <button className="button-dark form-submit" type="submit">Send my arrival note <ArrowUpRight size={17} /></button>
           </form>}

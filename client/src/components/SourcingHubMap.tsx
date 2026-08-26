@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight, Factory, MapPin, Ship, Sparkles } from "lucide-react";
+import { Link } from "wouter";
 
 type Hub = {
   id: string;
@@ -12,13 +13,14 @@ type Hub = {
   x: string;
   y: string;
   icon: "factory" | "sparkles" | "ship";
+  routeSlug: string;
 };
 
 const hubs: Hub[] = [
-  { id: "shenzhen", city: "Shenzhen", chinese: "深圳", label: "01 · Prepare", focus: "Electronics & hardware", detail: "A practical base for factory context, product iteration, and supplier conversations across the Greater Bay Area.", note: "Pair Shenzhen with Dongguan when production-floor time is central to the visit.", x: "64%", y: "73%", icon: "factory" },
-  { id: "guangzhou", city: "Guangzhou", chinese: "广州", label: "02 · Meet", focus: "Consumer goods & trade fairs", detail: "Useful for category discovery, trade-show days, and supplier meetings with room to compare options in person.", note: "Plan a focused meeting sequence; trade-show days move quickly.", x: "57%", y: "67%", icon: "sparkles" },
-  { id: "yiwu", city: "Yiwu", chinese: "义乌", label: "03 · Verify", focus: "Small commodities & product discovery", detail: "A concentrated route for researching product ranges, sampling possibilities, and the commercial details behind high-volume categories.", note: "Bring decision criteria with you so each product conversation stays useful.", x: "72%", y: "51%", icon: "factory" },
-  { id: "shanghai", city: "Shanghai", chinese: "上海", label: "04 · Hand off", focus: "Commercial bridge & logistics", detail: "A strong point for partner meetings, international connections, and framing the next leg from visit to onward movement.", note: "Use the final meeting to confirm owner, documents, and next communication step.", x: "80%", y: "42%", icon: "ship" },
+  { id: "shenzhen", city: "Shenzhen", chinese: "深圳", label: "01 · Prepare", focus: "Electronics & hardware", detail: "A practical base for factory context, product iteration, and supplier conversations across the Greater Bay Area.", note: "Pair Shenzhen with Dongguan when production-floor time is central to the visit.", x: "64%", y: "73%", icon: "factory", routeSlug: "shenzhen" },
+  { id: "guangzhou", city: "Guangzhou", chinese: "广州", label: "02 · Meet", focus: "Consumer goods & trade fairs", detail: "Useful for category discovery, trade-show days, and supplier meetings with room to compare options in person.", note: "Plan a focused meeting sequence; trade-show days move quickly.", x: "57%", y: "67%", icon: "sparkles", routeSlug: "guangzhou" },
+  { id: "yiwu", city: "Yiwu", chinese: "义乌", label: "03 · Verify", focus: "Small commodities & product discovery", detail: "A concentrated route for researching product ranges, sampling possibilities, and the commercial details behind high-volume categories.", note: "Bring decision criteria with you so each product conversation stays useful.", x: "72%", y: "51%", icon: "factory", routeSlug: "yiwu" },
+  { id: "shanghai", city: "Shanghai", chinese: "上海", label: "04 · Hand off", focus: "Commercial bridge & logistics", detail: "A strong point for partner meetings, international connections, and framing the next leg from visit to onward movement.", note: "Use the final meeting to confirm owner, documents, and next communication step.", x: "80%", y: "42%", icon: "ship", routeSlug: "shanghai-business" },
 ];
 
 function HubIcon({ type }: { type: Hub["icon"] }) {
@@ -58,7 +60,7 @@ export default function SourcingHubMap() {
         <div className="hub-detail-title"><span className="hub-detail-icon"><HubIcon type={activeHub.icon} /></span><div><h3>{activeHub.city}</h3><p>{activeHub.chinese} · {activeHub.focus}</p></div></div>
         <p className="hub-detail-copy">{activeHub.detail}</p>
         <div className="hub-detail-note"><i /><p>{activeHub.note}</p></div>
-        <a href="#business-brief" className="hub-detail-link">Start a brief for {activeHub.city} <ArrowUpRight size={16} /></a>
+        <Link href={`/business-cities/${activeHub.routeSlug}`} className="hub-detail-link">Explore the {activeHub.city} route <ArrowUpRight size={16} /></Link>
       </aside>
     </div>
   );

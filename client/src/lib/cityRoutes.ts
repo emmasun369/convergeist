@@ -1,0 +1,77 @@
+export type CityAudience = "arrival" | "business";
+
+export type CityRoute = {
+  slug: string;
+  audience: CityAudience;
+  city: string;
+  chinese: string;
+  routeNo: string;
+  eyebrow: string;
+  title: string;
+  emphasis: string;
+  introduction: string;
+  image: string;
+  imageAlt: string;
+  note: string;
+  lens: string;
+  stages: { title: string; copy: string }[];
+  fieldNotes: { label: string; copy: string }[];
+  related: string[];
+};
+
+export const cityRoutes: CityRoute[] = [
+  {
+    slug: "shanghai", audience: "arrival", city: "Shanghai", chinese: "上海", routeNo: "01", eyebrow: "First city route · Student & visitor", title: "A big-city arrival with a", emphasis: "clear first rhythm.", introduction: "Shanghai can feel expansive on day one. This route starts small: the airport exit, your first address, a reliable way to pay, and one neighbourhood routine you can repeat.", image: "https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=1600&q=86", imageAlt: "Shanghai skyline across the Huangpu River at dusk", note: "Give the first 72 hours a shape before you ask the city to make sense.", lens: "International access · city systems · familiar routines",
+    stages: [{ title: "Land with one address", copy: "Keep the first onward journey simple: your stay, a charged phone, and one backup contact." }, { title: "Make one useful loop", copy: "Choose a short route between where you sleep, eat, recharge, and return." }, { title: "Find your daily layer", copy: "Build confidence through the small systems: payments, delivery, transport, and a familiar nearby place." }],
+    fieldNotes: [{ label: "Carry with you", copy: "Your accommodation name in Chinese, an offline copy of the address, and a first-day charger plan." }, { label: "First useful question", copy: "What is the simplest route between the airport, your stay, and the place you need to be tomorrow?" }], related: ["beijing", "hangzhou", "chengdu"],
+  },
+  {
+    slug: "beijing", audience: "arrival", city: "Beijing", chinese: "北京", routeNo: "02", eyebrow: "First city route · Student & visitor", title: "A first chapter with room to", emphasis: "read the context.", introduction: "Beijing rewards a measured beginning. This route helps you move from major arrival logistics to a first grasp of neighbourhood rhythm, campus or visitor context, and the practical habits that make a large city feel legible.", image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1600&q=86", imageAlt: "Historic architecture in Beijing at golden hour", note: "Let the first route be practical enough to leave room for everything you came to see.", lens: "Cultural context · institutional rhythm · city orientation",
+    stages: [{ title: "Settle the first transfer", copy: "Confirm the arrival address and the first handoff before the airport energy has to carry the whole day." }, { title: "Read the district", copy: "Give your first neighbourhood a simple frame: what is nearby, how do you return, and where can you ask a practical question?" }, { title: "Build a patient routine", copy: "Use the first week to make repeatable choices rather than trying to master the entire city at once." }],
+    fieldNotes: [{ label: "Carry with you", copy: "Your host or campus contact, the full local address, and enough time for a slower first transfer." }, { label: "First useful question", copy: "Which nearby place will make tomorrow’s route feel less unfamiliar?" }], related: ["shanghai", "chengdu", "hangzhou"],
+  },
+  {
+    slug: "chengdu", audience: "arrival", city: "Chengdu", chinese: "成都", routeNo: "03", eyebrow: "First city route · Student & visitor", title: "A softer landing into a", emphasis: "city you can inhabit.", introduction: "Chengdu offers an approachable rhythm for visitors and new students. This route prioritises the unglamorous wins that make a place feel livable: a first meal, a reliable return route, and a few everyday systems you understand.", image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=86", imageAlt: "A calm city street scene in China", note: "A good first week is not a checklist. It is a few routines that start to belong to you.", lens: "Everyday ease · food culture · local rhythm",
+    stages: [{ title: "Choose a slow first day", copy: "Keep the landing plan uncluttered enough to notice the things you will repeat." }, { title: "Make food and movement easy", copy: "Find one place to eat and one route to return before you spend energy on the rest." }, { title: "Turn curiosity into routine", copy: "Let the city unfold through useful, low-stakes choices rather than an all-at-once itinerary." }],
+    fieldNotes: [{ label: "Carry with you", copy: "An address card, a power-bank plan, and a simple note of the first person you can contact locally." }, { label: "First useful question", copy: "What would make the next morning feel easy before it begins?" }], related: ["hangzhou", "shanghai", "beijing"],
+  },
+  {
+    slug: "hangzhou", audience: "arrival", city: "Hangzhou", chinese: "杭州", routeNo: "04", eyebrow: "First city route · Student & visitor", title: "A student-friendly route with a", emphasis: "little more breathing room.", introduction: "Hangzhou balances a connected city feel with a gentler first-week pace. This route helps visitors and students turn arrival logistics into a practical local pattern—one that leaves space for campus, work, and ordinary life.", image: "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?auto=format&fit=crop&w=1600&q=86", imageAlt: "A lakeside city scene in China", note: "Use the city’s rhythm to make a manageable first week, not a crowded first itinerary.", lens: "Campus context · city balance · everyday confidence",
+    stages: [{ title: "Anchor the first night", copy: "Begin with the address, building details, and a calm route from arrival to the place you can reset." }, { title: "Learn the useful nearby", copy: "Map the small places that support a first week: groceries, a transit stop, a reliable meal, and an easy return." }, { title: "Keep one route familiar", copy: "A repeatable local pattern makes space for the new people and opportunities that follow." }],
+    fieldNotes: [{ label: "Carry with you", copy: "A written version of the address, a student or host contact, and enough battery for the final part of the trip." }, { label: "First useful question", copy: "What can you make familiar before the first week asks more of you?" }], related: ["shanghai", "chengdu", "beijing"],
+  },
+  {
+    slug: "shenzhen", audience: "business", city: "Shenzhen", chinese: "深圳", routeNo: "01", eyebrow: "Business hub route · Greater Bay Area", title: "A visit designed for", emphasis: "product reality.", introduction: "Shenzhen is a useful base when hardware, electronics, product iteration, or factory context needs to become visible. This route keeps the visit focused on evidence, decisions, and a handoff your team can use after the flight home.", image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1600&q=86", imageAlt: "A dense modern skyline in southern China", note: "Pair Shenzhen with Dongguan when production-floor time is central to the visit.", lens: "Electronics · hardware · Greater Bay Area production",
+    stages: [{ title: "Prepare the evidence list", copy: "Arrive with the product questions, sample criteria, and meeting roles already visible to the team." }, { title: "Meet where the work happens", copy: "Use the visit to gather context that does not survive a spreadsheet: process, people, and practical constraints." }, { title: "Turn observations into decisions", copy: "Leave with an owner, a short decision record, and the next follow-up rather than an unstructured photo roll." }],
+    fieldNotes: [{ label: "Before the floor", copy: "Carry product references, the question behind each visit, and a clear note of who can approve what." }, { label: "Handoff prompt", copy: "What must be confirmed before the next sample, production, or commercial decision moves forward?" }], related: ["guangzhou", "yiwu", "shanghai-business"],
+  },
+  {
+    slug: "guangzhou", audience: "business", city: "Guangzhou", chinese: "广州", routeNo: "02", eyebrow: "Business hub route · Trade & supplier meetings", title: "A trade route built for", emphasis: "comparison in person.", introduction: "Guangzhou is useful when category discovery, trade-fair days, and supplier conversations need to happen in sequence. This route helps you make the time on the ground comparable, documented, and easier to follow through on.", image: "https://images.unsplash.com/photo-1536300099515-6c61b290b654?auto=format&fit=crop&w=1600&q=86", imageAlt: "A contemporary Chinese city waterfront at sunset", note: "Trade-show days move quickly. Keep the meeting sequence and comparison criteria visible.", lens: "Consumer goods · trade fairs · supplier comparison",
+    stages: [{ title: "Set the comparison frame", copy: "Decide what will make a supplier conversation useful before the first meeting starts." }, { title: "Meet with a working note", copy: "Capture the signals that matter: product fit, communication rhythm, samples, and practical next steps." }, { title: "Sort the follow-up", copy: "Separate promising conversations from open questions while the context is still fresh." }],
+    fieldNotes: [{ label: "Before the visit", copy: "Bring category criteria, a workable meeting sequence, and one place for your team to capture decisions." }, { label: "Handoff prompt", copy: "Which conversations have a real next step, who owns it, and what evidence supports it?" }], related: ["shenzhen", "yiwu", "shanghai-business"],
+  },
+  {
+    slug: "yiwu", audience: "business", city: "Yiwu", chinese: "义乌", routeNo: "03", eyebrow: "Business hub route · Product discovery", title: "A route for seeing the", emphasis: "range before you decide.", introduction: "Yiwu makes product discovery and range comparison tangible. This route keeps the task grounded: define what you are comparing, document the useful differences, and leave with a shortlist that still makes sense after the pace of the market has passed.", image: "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?auto=format&fit=crop&w=1600&q=86", imageAlt: "Freight containers in a busy logistics yard", note: "Bring decision criteria with you so each product conversation stays useful.", lens: "Small commodities · product range · discovery work",
+    stages: [{ title: "Define the shortlist", copy: "Arrive with a few categories, decision criteria, and the questions that distinguish a useful lead from an interesting stop." }, { title: "Verify what changes the choice", copy: "Look for the details that affect product fit, communication, samples, and the path to a next conversation." }, { title: "Carry the useful context home", copy: "Record the why behind the shortlist, not only the names and images collected during the day." }],
+    fieldNotes: [{ label: "Before the visit", copy: "Bring a category brief, reference products, and a decision record that your wider team can read later." }, { label: "Handoff prompt", copy: "What differentiates the options you want to keep moving, and what still needs verification?" }], related: ["guangzhou", "shenzhen", "shanghai-business"],
+  },
+  {
+    slug: "shanghai-business", audience: "business", city: "Shanghai", chinese: "上海", routeNo: "04", eyebrow: "Business hub route · Commercial handoff", title: "A commercial bridge for the", emphasis: "work that follows the visit.", introduction: "Shanghai is a strong setting for partner meetings, commercial context, and international handoffs. This route makes the final part of the trip work harder: align people, documents, and the next conversation before everyone returns to separate calendars.", image: "https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=1600&q=86", imageAlt: "Shanghai skyline across the Huangpu River at dusk", note: "Use the final meeting to confirm owner, documents, and the next communication step.", lens: "Commercial bridge · meetings · logistics context",
+    stages: [{ title: "Align the meeting purpose", copy: "Make clear whether the room is for context, decisions, relationship building, or an operational handoff." }, { title: "Make the next step concrete", copy: "Turn broad agreement into a named owner, a document, and a dated point of return." }, { title: "Leave the route readable", copy: "The trip should finish with a concise note that helps people act when the city is no longer in view." }],
+    fieldNotes: [{ label: "Before the meeting", copy: "Bring the open decision, a short list of documents or materials, and a realistic handoff question." }, { label: "Handoff prompt", copy: "What must be visible to the person who was not in the room when the next action begins?" }], related: ["shenzhen", "guangzhou", "yiwu"],
+  },
+];
+
+export const cityRouteBySlug = (slug: string, audience?: CityAudience) => cityRoutes.find((route) => route.slug === slug && (!audience || route.audience === audience));
+export const cityRoutesForAudience = (audience: CityAudience) => cityRoutes.filter((route) => route.audience === audience);
+
+export const cityRouteAssets: Record<string, { image: string; imageAlt: string; artifactLabel: string; artifactValue: string }> = {
+  shanghai: { image: "https://images.unsplash.com/photo-1548919973-5cef591cdbc9?auto=format&fit=crop&w=1600&q=86", imageAlt: "Shanghai skyline across the Huangpu River at dusk", artifactLabel: "FIRST-DAY ROUTE", artifactValue: "Airport → stay → one neighbourhood loop" },
+  beijing: { image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1600&q=86", imageAlt: "Historic architecture in Beijing at golden hour", artifactLabel: "CONTEXT CARD", artifactValue: "Host contact · district · return route" },
+  chengdu: { image: "/manus-storage/convergeist-chengdu-street-food_16a1ec5a.webp", imageAlt: "A busy Chengdu street-food scene at night", artifactLabel: "FIRST-WEEK RITUAL", artifactValue: "One food stop · one return route · one familiar face" },
+  hangzhou: { image: "/manus-storage/convergeist-hangzhou-west-lake_d3610f39.jpg", imageAlt: "West Lake in Hangzhou with a lakeside pavilion", artifactLabel: "ARRIVAL POCKET", artifactValue: "Address card · local stop · first campus loop" },
+  shenzhen: { image: "/manus-storage/convergeist-shenzhen-electronics_be2f9d91.jpeg", imageAlt: "Shenzhen electronics market with multilingual shop signs", artifactLabel: "VISIT EVIDENCE", artifactValue: "Sample criteria · floor notes · decision owner" },
+  guangzhou: { image: "/manus-storage/convergeist-guangzhou-wholesale_94e5815d.jpg", imageAlt: "Guangzhou wholesale centre on a supplier-visit route", artifactLabel: "COMPARISON RECORD", artifactValue: "Supplier · category · next action" },
+  yiwu: { image: "/manus-storage/convergeist-yiwu-market_4c552858.jpg", imageAlt: "Yiwu wholesale market aisle with products and buyers", artifactLabel: "RANGE SHORTLIST", artifactValue: "Category · reference · verification question" },
+  "shanghai-business": { image: "/manus-storage/convergeist-shanghai-handoff-port_5c511313.jpg", imageAlt: "Container port and logistics handoff activity near Shanghai", artifactLabel: "HANDOFF SHEET", artifactValue: "Owner · documents · dated next step" },
+};

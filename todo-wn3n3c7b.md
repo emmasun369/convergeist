@@ -42,3 +42,11 @@
 - [x] Update the Business Visits headline with the approved wording.
 - [x] Correct cross-page anchors and audience-specific conversion targets.
 - [x] Verify all registered routes and public navigation links before delivery.
+
+# City Route Experience
+
+- [x] Create the shared city-route registry, reusable page shell, and explicit route table.
+- [x] Build and connect the four student/tourist arrival city pages.
+- [x] Build and connect the four business city pages and sourcing atlas actions.
+- [x] Carry selected city context into the Arrival Plan and Business Brief.
+- [x] Verify all city pages, cross-links, responsive layouts, and reduced-motion behavior.

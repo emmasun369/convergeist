@@ -6,14 +6,15 @@ type BriefData = { name: string; email: string; travelWindow: string; city: stri
 const initialBrief: BriefData = { name: "", email: "", travelWindow: "", city: "", focus: "", stage: "", notes: "" };
 const stepMeta = [{ label: "Your visit", hint: "When, where, and who is coming?" }, { label: "The work", hint: "What needs attention on the ground?" }, { label: "The handoff", hint: "What should keep moving once you leave?" }];
 
-export default function BusinessBriefForm() {
+export default function BusinessBriefForm({ initialCity = "" }: { initialCity?: string }) {
   const [step, setStep] = useState(1);
-  const [brief, setBrief] = useState<BriefData>(initialBrief);
+  const [brief, setBrief] = useState<BriefData>(() => ({ ...initialBrief, city: initialCity }));
   const [errors, setErrors] = useState<Partial<Record<keyof BriefData, string>>>({});
   const [sent, setSent] = useState(false);
   const stepHeadingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => { if (step > 1) stepHeadingRef.current?.focus(); }, [step]);
+  useEffect(() => { if (initialCity) setBrief((current) => ({ ...current, city: initialCity })); }, [initialCity]);
   const update = (field: keyof BriefData, value: string) => { setBrief((current) => ({ ...current, [field]: value })); setErrors((current) => ({ ...current, [field]: undefined })); };
   const validate = () => {
     const nextErrors: Partial<Record<keyof BriefData, string>> = {};
@@ -27,7 +28,7 @@ export default function BusinessBriefForm() {
   const submit = (event: FormEvent) => { event.preventDefault(); if (!validate()) return; setSent(true); toast.success("Your business brief is ready to send.", { description: "Review the route note, then email it to the ConvergeIST team." }); };
   const summary = [brief.travelWindow, brief.city, brief.focus, brief.stage].filter(Boolean).join(" · ");
 
-  if (sent) return <div className="brief-sent-card" role="status" aria-live="polite"><span className="brief-sent-icon"><CheckCircle2 size={24} /></span><p className="kicker">Route note prepared</p><h3 tabIndex={-1} ref={stepHeadingRef}>Your first business route is taking shape.</h3><p>Your route note is held locally until you choose to email it. The summary below is ready for a real, useful first conversation.</p><div className="brief-route-summary"><Route size={15} /><div><strong>Prepared route</strong>{summary || "Your visit, work, and handoff details"}</div></div><a href={mailto} className="brief-sent-contact"><Mail size={16} /> Email this route note</a><button type="button" className="button-dark" onClick={() => { setSent(false); setStep(1); setBrief(initialBrief); }}>Prepare another brief <ArrowRight size={16} /></button></div>;
+  if (sent) return <div className="brief-sent-card" role="status" aria-live="polite"><span className="brief-sent-icon"><CheckCircle2 size={24} /></span><p className="kicker">Route note prepared</p><h3 tabIndex={-1} ref={stepHeadingRef}>Your first business route is taking shape.</h3><p>Your route note is held locally until you choose to email it. The summary below is ready for a real, useful first conversation.</p><div className="brief-route-summary"><Route size={15} /><div><strong>Prepared route</strong>{summary || "Your visit, work, and handoff details"}</div></div><a href={mailto} className="brief-sent-contact"><Mail size={16} /> Email this route note</a><button type="button" className="button-dark" onClick={() => { setSent(false); setStep(1); setBrief({ ...initialBrief, city: initialCity }); }}>Prepare another brief <ArrowRight size={16} /></button></div>;
 
   return <form className="business-brief-form" onSubmit={submit} noValidate>
     <div className="brief-form-top"><div><p className="kicker">A short route note is enough to start</p><h3 tabIndex={-1} ref={stepHeadingRef}>{stepMeta[step - 1].label}</h3><p>{stepMeta[step - 1].hint}</p></div><ClipboardPenLine size={23} /></div>

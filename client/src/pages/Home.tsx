@@ -10,6 +10,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SectionLabel from "@/components/SectionLabel";
 import HeroRouteRibbon from "@/components/HeroRouteRibbon";
+import { cityRoutesForAudience } from "@/lib/cityRoutes";
 
 const journey = [
   { no: "01", title: "Before you fly", body: "Get accommodation, arrival timing, and your first practical questions in order.", icon: <PlaneLanding size={20} /> },
@@ -22,6 +23,8 @@ const serviceTiles = [
   { label: "Arrivals & transit", text: "Airport plans, safe onward routes, and less charades on day one.", icon: <MapPinned size={21} />, className: "service-tile--transit" },
   { label: "Everyday confidence", text: "Local apps, payments, food, and cultural context that adds up.", icon: <Languages size={21} />, className: "service-tile--apps" },
 ];
+
+const arrivalCities = cityRoutesForAudience("arrival");
 
 export default function Home() {
   const pageRef = useRef<HTMLDivElement>(null);
@@ -76,6 +79,11 @@ export default function Home() {
       <section className="journey-section" id="journey">
         <div className="journey-heading"><SectionLabel number="Your route, made visible">The journey</SectionLabel><h2>Three chapters.<br /><em>One steady hand.</em></h2><p>Start with the part that feels most uncertain. We help you connect the dots around it.</p></div>
         <div className="journey-list">{journey.map((item, index) => <article className="journey-item" key={item.no}><div className="journey-no"><span>{item.no}</span><i /><b className="journey-draw" /></div><div className="journey-icon">{item.icon}</div><div className="journey-copy"><h3>{item.title}</h3><p>{item.body}</p></div><Link href="/services" aria-label={`Explore ${item.title}`} className="journey-arrow"><ArrowUpRight size={19} /></Link>{index === 1 && <span className="journey-side-note">You do not have to figure it<br />out as you go.</span>}</article>)}</div>
+      </section>
+
+      <section className="arrival-city-selector" id="arrival-cities">
+        <div className="arrival-city-head"><SectionLabel number="Choose the city that starts your route">Arrival cities</SectionLabel><h2>Start with a city that feels like a <em>possible first chapter.</em></h2><p>Every arrival has its own pace. Explore the city route that best fits your first week, then bring that context into your arrival plan.</p></div>
+        <div className="arrival-city-grid">{arrivalCities.map((city, index) => <Link href={`/arrivals/${city.slug}`} className="arrival-city-card" key={city.slug}><span>0{index + 1} · {city.chinese}</span><h3>{city.city}</h3><p>{city.lens}</p><ArrowUpRight size={19} /></Link>)}</div>
       </section>
 
       <section className="services-preview">

@@ -11,6 +11,7 @@ import SourcingHubMap from "@/components/SourcingHubMap";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SectionLabel from "@/components/SectionLabel";
+import { cityRouteBySlug } from "@/lib/cityRoutes";
 
 const tripStages = [
   {
@@ -50,6 +51,7 @@ const tradeNotes = [
 
 export default function Business() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const selectedCity = cityRouteBySlug(new URLSearchParams(window.location.search).get("city") ?? "", "business");
 
   useEffect(() => {
     const page = pageRef.current;
@@ -265,7 +267,7 @@ export default function Business() {
 
         <section className="business-brief" id="business-brief">
           <div className="business-brief-head"><SectionLabel number="Turn the next question into a route note">Start a business brief</SectionLabel><h2>Begin with the part that needs a <em>clearer answer.</em></h2><p>Three short steps are enough to outline the visit, the work, and the handoff you want to make easier.</p><aside className="business-brief-response"><span>Response route · 回复路径</span><ol><li><p><strong>We read the route.</strong> Your city, timing, and question set the first useful context.</p></li><li><p><strong>You choose the channel.</strong> The next note can move through email or a direct conversation.</p></li><li><p><strong>Nothing is hidden.</strong> This intake prepares a clear brief, not an automatic sales funnel.</p></li></ol></aside></div>
-          <div className="brief-panel"><BusinessBriefForm /></div>
+          <div className="brief-panel"><BusinessBriefForm initialCity={selectedCity?.city ?? ""} /></div>
         </section>
 
         <section className="business-cta" id="contact">
