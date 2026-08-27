@@ -79,3 +79,8 @@
 
 - [x] Rebuild mobile city card layout and remove overlapping route metadata.
 - [x] Verify city discovery cards on the home page and City Routes index at handheld widths.
+
+# Mobile-Only Card Cascade Repair
+
+- [x] Identify and override the live mobile rule that keeps city anchors inline.
+- [x] Verify the corrected mobile city cards while preserving the desktop layout.
