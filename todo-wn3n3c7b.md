@@ -61,3 +61,9 @@
 
 - [x] Add top-of-page restoration when a student/tourist or business city route changes.
 - [x] Verify city-to-city transitions without breaking intentional in-page anchors.
+
+# Selective Neumorphic Detail Layer
+
+- [x] Identify the selected controls and route highlights that benefit from tactile elevation.
+- [x] Apply sparse neumorphic styling without weakening button contrast or route hierarchy.
+- [x] Verify desktop and mobile interaction states before delivery.
