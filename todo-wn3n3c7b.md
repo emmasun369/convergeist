@@ -84,3 +84,8 @@
 
 - [x] Identify and override the live mobile rule that keeps city anchors inline.
 - [x] Verify the corrected mobile city cards while preserving the desktop layout.
+
+# Mobile Related-City Card Repair
+
+- [x] Rebuild the individual city page related-route cards as full-width mobile blocks.
+- [x] Verify student/tourist and business related-city sections at handheld widths.
