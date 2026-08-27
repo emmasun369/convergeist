@@ -2,7 +2,7 @@
  * Business Route extends the Arrival Notebook system into a practical, trade-led
  * field guide for people visiting China to meet suppliers and coordinate shipping.
  */
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -57,6 +57,17 @@ export default function Business() {
   const { flags, isMobile } = useFeatureFlags();
   const selectedCity = cityRouteBySlug(new URLSearchParams(window.location.search).get("city") ?? "", "business");
   const desktopFilmEnabled = flags.desktopFilmTreatment && !isMobile;
+  const [showDesktopFilm, setShowDesktopFilm] = useState(false);
+
+  useEffect(() => {
+    if (!desktopFilmEnabled) {
+      setShowDesktopFilm(false);
+      return;
+    }
+
+    const revealFilm = window.setTimeout(() => setShowDesktopFilm(true), 10_000);
+    return () => window.clearTimeout(revealFilm);
+  }, [desktopFilmEnabled]);
 
   useEffect(() => {
     const page = pageRef.current;
@@ -177,7 +188,11 @@ export default function Business() {
 
           <div className="business-hero-visual">
             <figure className={`business-hero-image ${desktopFilmEnabled ? "business-hero-image--film" : ""}`}>
-              {desktopFilmEnabled ? <DesktopFilmTreatment /> : <><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=86" alt="Business partners reviewing product details during a supplier meeting" /><div className="business-hero-image-tint" /></>}
+              <div className="business-hero-image__still">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=86" alt="Business partners reviewing product details during a supplier meeting" />
+                <div className="business-hero-image-tint" />
+              </div>
+              {desktopFilmEnabled && showDesktopFilm ? <div className="business-hero-image__film"><DesktopFilmTreatment /></div> : null}
               <figcaption><span>01 · 会面笔记</span> You are not here to guess the route.</figcaption>
             </figure>
             <div className="business-route-card">

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Clapperboard, MapPin } from "lucide-react";
+import { Clapperboard } from "lucide-react";
 import { useFeatureFlags } from "@/contexts/FeatureFlagsContext";
 
 export default function DesktopFilmTreatment() {
@@ -22,7 +22,6 @@ export default function DesktopFilmTreatment() {
     <video ref={videoRef} className="desktop-film__video" muted loop playsInline preload="metadata" poster="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=86"><source src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663312168274/DDJdRgGvqEhjCNSv.mp4" type="video/mp4" /></video>
     <div className="desktop-film__wash" />
     <div className="desktop-film__frame" />
-    <div className="desktop-film__meta desktop-film__meta--top"><span><Clapperboard size={13} /> CN / FIELD REEL</span><b>01:04</b></div>
-    <div className="desktop-film__meta desktop-film__meta--bottom"><span><MapPin size={13} /> Supplier context, in motion</span><i /></div>
+    <div className="desktop-film__meta desktop-film__meta--top"><span><Clapperboard size={13} /> CN</span><b>01:04</b></div>
   </div>;
 }
