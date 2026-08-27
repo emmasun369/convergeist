@@ -56,3 +56,8 @@
 - [x] Inventory every public route, navigation item, card action, anchor, and conversion link.
 - [x] Repair all missing city-route discovery surfaces and incorrectly targeted destinations.
 - [x] Verify every primary user journey on desktop and mobile from discovery to contact.
+
+# City Route Transition
+
+- [x] Add top-of-page restoration when a student/tourist or business city route changes.
+- [x] Verify city-to-city transitions without breaking intentional in-page anchors.

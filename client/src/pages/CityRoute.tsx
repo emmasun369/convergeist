@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { ArrowLeft, ArrowUpRight, Check, ClipboardCheck, MapPin, Route as RouteIcon } from "lucide-react";
+import { useEffect } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SectionLabel from "@/components/SectionLabel";
@@ -19,6 +20,11 @@ function CityRoutePage({ route }: { route: CityRouteData }) {
   const related = route.related.map((slug) => cityRouteBySlug(slug)).filter((item): item is CityRouteData => Boolean(item));
   const cardRoutes = related.length ? related : cityRoutesForAudience(route.audience).filter((item) => item.slug !== route.slug).slice(0, 3);
   const asset = cityRouteAssets[route.slug] ?? { image: route.image, imageAlt: route.imageAlt, artifactLabel: "ROUTE NOTE", artifactValue: route.lens };
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
+    return () => window.cancelAnimationFrame(frame);
+  }, [route.slug, route.audience]);
 
   return <div className={`page-shell city-page city-page--${route.audience}`}>
     <SiteHeader />
