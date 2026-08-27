@@ -96,3 +96,9 @@
 - [x] Trace representative desktop and mobile journeys, including enabled and disabled feature flags.
 - [x] Repair every discovered broken, misleading, or disconnected destination.
 - [x] Verify all final journeys and conversion paths across viewport states.
+
+# GitHub & Static Hosting Handoff
+
+- [x] Add Vercel and Netlify SPA deployment configuration and a public deployment README.
+- [ ] Verify clean production build, deep-route fallback behavior, and safe Git staging contents.
+- [ ] Create and push the new emmasun369/convergeist GitHub repository.

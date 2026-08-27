@@ -2,19 +2,21 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
+import { lazy, Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { FeatureFlagsProvider } from "./contexts/FeatureFlagsContext";
 import FeatureFlagPanel from "./components/FeatureFlagPanel";
 import MobileEnquiryDock from "./components/MobileEnquiryDock";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import ArrivalPlan from "./pages/ArrivalPlan";
-import Guides from "./pages/Guides";
-import Business from "./pages/Business";
-import { ArrivalCityRoute, BusinessCityRoute } from "./pages/CityRoute";
-import Cities from "./pages/Cities";
-import NotFound from "./pages/NotFound";
+const Home = lazy(() => import("./pages/Home"));
+const Services = lazy(() => import("./pages/Services"));
+const ArrivalPlan = lazy(() => import("./pages/ArrivalPlan"));
+const Guides = lazy(() => import("./pages/Guides"));
+const Business = lazy(() => import("./pages/Business"));
+const ArrivalCityRoute = lazy(() => import("./pages/CityRoute").then((module) => ({ default: module.ArrivalCityRoute })));
+const BusinessCityRoute = lazy(() => import("./pages/CityRoute").then((module) => ({ default: module.BusinessCityRoute })));
+const Cities = lazy(() => import("./pages/Cities"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function Router() {
   return <Switch>
@@ -32,5 +34,5 @@ function Router() {
 }
 
 export default function App() {
-  return <ErrorBoundary><ThemeProvider defaultTheme="light"><FeatureFlagsProvider><TooltipProvider><Toaster richColors position="bottom-right" /><Router /><MobileEnquiryDock /><FeatureFlagPanel /></TooltipProvider></FeatureFlagsProvider></ThemeProvider></ErrorBoundary>;
+  return <ErrorBoundary><ThemeProvider defaultTheme="light"><FeatureFlagsProvider><TooltipProvider><Toaster richColors position="bottom-right" /><Suspense fallback={<main className="route-loading" aria-live="polite" aria-label="Loading page"><span>Loading route</span><i /></main>}><Router /></Suspense><MobileEnquiryDock /><FeatureFlagPanel /></TooltipProvider></FeatureFlagsProvider></ThemeProvider></ErrorBoundary>;
 }

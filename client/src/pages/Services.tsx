@@ -12,19 +12,19 @@ const stages = [
     mark: "01", icon: <PlaneLanding size={22} />, eyebrow: "Before you fly · 出发前", title: "Land with a plan, not a hundred tabs open.",
     body: "We help you turn arrival questions into a workable checklist before your departure date gets close.",
     items: ["Accommodation options matched to campus and budget", "Temporary stay planning for early arrivals", "Arrival-day schedule and transport coordination"],
-    image: "/manus-storage/convergeist-housing_ba625beb.jpg", caption: "A room should feel checked, clear, and close enough."
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=86", caption: "A room should feel checked, clear, and close enough."
   },
   {
     mark: "02", icon: <MapPin size={22} />, eyebrow: "Landing day · 抵达日", title: "A calm route from arrivals to your first door.",
     body: "Get a clear sequence for the moments when a dead battery and unfamiliar signs feel much bigger than they are.",
     items: ["Airport pickup and onward transport planning", "Local transit, Didi, and map orientation", "A first-meal and essential-stop game plan"],
-    image: "/manus-storage/convergeist-arrival-transport_1cf09e56.jpg", caption: "One familiar face can change the whole first evening."
+    image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1400&q=86", caption: "One familiar face can change the whole first evening."
   },
   {
     mark: "03", icon: <Smartphone size={22} />, eyebrow: "Your first week · 第一周", title: "Turn a new city into an everyday routine.",
     body: "The practical details get easier when you know the right local tools, phrases, and places to begin.",
     items: ["Essential local-app and mobile setup guidance", "Food, payment, and currency-exchange orientation", "Cultural familiarisation and community connections"],
-    image: "/manus-storage/convergeist-city-navigation_ae0c114e.jpg", caption: "The details that make a city feel usable."
+    image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1400&q=86", caption: "The details that make a city feel usable."
   },
 ];
 

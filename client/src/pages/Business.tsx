@@ -177,7 +177,7 @@ export default function Business() {
 
           <div className="business-hero-visual">
             <figure className={`business-hero-image ${desktopFilmEnabled ? "business-hero-image--film" : ""}`}>
-              {desktopFilmEnabled ? <DesktopFilmTreatment /> : <><img src="/manus-storage/convergeist-supplier-meeting_94a89879.jpg" alt="Business partners reviewing product details during a supplier meeting in China" /><div className="business-hero-image-tint" /></>}
+              {desktopFilmEnabled ? <DesktopFilmTreatment /> : <><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=86" alt="Business partners reviewing product details during a supplier meeting" /><div className="business-hero-image-tint" /></>}
               <figcaption><span>01 · 会面笔记</span> You are not here to guess the route.</figcaption>
             </figure>
             <div className="business-route-card">

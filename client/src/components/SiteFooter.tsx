@@ -3,6 +3,7 @@
  */
 import { Link } from "wouter";
 import { ArrowUpRight, Instagram, Mail, MessageCircle, Phone } from "lucide-react";
+import BrandMark from "@/components/BrandMark";
 
 export default function SiteFooter() {
   return (
@@ -11,7 +12,7 @@ export default function SiteFooter() {
       <div className="footer-grid">
         <section>
           <Link href="/" className="brand footer-brand" aria-label="ConvergeIST home">
-            <img src="/manus-storage/convergeist-logo-mark_e24b7c42.png" alt="" className="brand-mark" />
+            <BrandMark className="brand-mark" />
             <span className="brand-wordmark">CONVERGE<span>IST</span></span>
             <span className="brand-destination">China arrival routes</span>
             <span className="brand-route-gesture" aria-hidden="true"><i /><b /></span>

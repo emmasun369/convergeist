@@ -64,7 +64,7 @@ export default function Home() {
         </div>
         <div className="hero-visual">
           <HeroRouteRibbon />
-          <div className="hero-image-frame"><img src="/manus-storage/convergeist-hero-arrival_8423e824.jpg" alt="An international student arriving at a contemporary airport in China" /><div className="hero-image-overlay" /></div>
+          <div className="hero-image-frame"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=86" alt="A traveller moving through an airport terminal" /><div className="hero-image-overlay" /></div>
           <div className="hero-note"><span className="note-pin" /><p><strong>欢迎来到中国</strong><br />A very practical kind of welcome.</p><ArrowUpRight size={16} /></div>
         </div>
         <div className="hero-footnote"><span>Scroll to trace the route</span><i /></div>
@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       <section className="services-preview">
-        <div className="services-image"><img src="/manus-storage/convergeist-housing_ba625beb.jpg" alt="A simple, sunlit student room prepared for a new arrival" /><div className="services-image-caption"><span>In the details</span><p>A safe route home starts before you reach the door.</p></div></div>
+        <div className="services-image"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=86" alt="A simple, sunlit room prepared for a new arrival" /><div className="services-image-caption"><span>In the details</span><p>A safe route home starts before you reach the door.</p></div></div>
         <div className="services-content"><SectionLabel number="Pieces of support that add up">How we help</SectionLabel><h2>The small things are rarely <em>small</em> when you are new.</h2><p>Housing. Getting from the airport. A first meal. The apps on your phone. A place to ask questions without feeling behind. We make space for all of it.</p><div className="service-tiles">{serviceTiles.map((tile) => <article key={tile.label} className={`service-tile ${tile.className}`}><span className="service-tile-icon">{tile.icon}</span><h3>{tile.label}</h3><p>{tile.text}</p><Link href="/services" aria-label={`Learn about ${tile.label}`}><CircleArrowRight size={21} /></Link></article>)}</div><Link href="/services" className="text-arrow-link">Explore all support <ArrowUpRight size={18} /></Link></div>
       </section>
 

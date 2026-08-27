@@ -19,7 +19,7 @@ export default function DesktopFilmTreatment() {
   if (isMobile || !flags.desktopFilmTreatment) return null;
 
   return <div className={`desktop-film ${flags.desktopFilmMotion ? "desktop-film--motion" : "desktop-film--still"}`} aria-hidden="true">
-    <video ref={videoRef} className="desktop-film__video" muted loop playsInline preload="metadata" poster="/manus-storage/convergeist-supplier-meeting_94a89879.jpg"><source src="/manus-storage/convergeist-business-film-loop_6819c583.mp4" type="video/mp4" /></video>
+    <video ref={videoRef} className="desktop-film__video" muted loop playsInline preload="metadata" poster="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=86"><source src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663312168274/DDJdRgGvqEhjCNSv.mp4" type="video/mp4" /></video>
     <div className="desktop-film__wash" />
     <div className="desktop-film__frame" />
     <div className="desktop-film__meta desktop-film__meta--top"><span><Clapperboard size={13} /> CN / FIELD REEL</span><b>01:04</b></div>

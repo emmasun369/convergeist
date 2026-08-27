@@ -5,6 +5,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { cityRouteBySlug } from "@/lib/cityRoutes";
+import BrandMark from "@/components/BrandMark";
 
 const navItems = [
   { label: "The journey", href: "/#journey", native: true },
@@ -64,7 +65,7 @@ export default function SiteHeader() {
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <div className="header-inner">
         <Link href="/" className="brand" aria-label="ConvergeIST home">
-          <img src="/manus-storage/convergeist-logo-mark_e24b7c42.png" alt="" className="brand-mark" />
+          <BrandMark className="brand-mark" />
           <span className="brand-wordmark">CONVERGE<span>IST</span></span>
           <span className="brand-destination">China arrival routes</span>
           <span className="brand-route-gesture" aria-hidden="true"><i /><b /></span>
