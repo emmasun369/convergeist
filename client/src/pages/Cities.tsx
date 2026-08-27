@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowUpRight, Building2, Compass, MapPin } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
@@ -19,6 +20,13 @@ function CityCollection({ audience }: { audience: "arrival" | "business" }) {
 }
 
 export default function Cities() {
+  useEffect(() => {
+    const anchor = window.location.hash.slice(1);
+    if (!anchor) return;
+    const frame = window.requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({ block: "start", behavior: "auto" }));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
   return <div className="page-shell cities-page">
     <SiteHeader />
     <main id="main-content" tabIndex={-1}>

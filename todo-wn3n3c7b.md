@@ -89,3 +89,10 @@
 
 - [x] Rebuild the individual city page related-route cards as full-width mobile blocks.
 - [x] Verify student/tourist and business related-city sections at handheld widths.
+
+# Complete Website Flow Audit
+
+- [x] Inventory every route, header/footer link, city route, anchor, and conversion action.
+- [x] Trace representative desktop and mobile journeys, including enabled and disabled feature flags.
+- [x] Repair every discovered broken, misleading, or disconnected destination.
+- [x] Verify all final journeys and conversion paths across viewport states.
