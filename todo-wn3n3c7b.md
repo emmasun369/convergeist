@@ -74,3 +74,8 @@
 - [x] Build a touch-first mobile enquiry flow behind its own flag.
 - [x] Build a desktop film treatment behind independent visual and motion flags.
 - [x] Verify feature flags and responsive experiences in enabled and disabled states.
+
+# Mobile City Card Repair
+
+- [x] Rebuild mobile city card layout and remove overlapping route metadata.
+- [x] Verify city discovery cards on the home page and City Routes index at handheld widths.
