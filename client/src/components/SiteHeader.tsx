@@ -4,11 +4,13 @@
 import { Link, useLocation } from "wouter";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { cityRouteBySlug } from "@/lib/cityRoutes";
 
 const navItems = [
   { label: "The journey", href: "/#journey", native: true },
   { label: "Support", href: "/services" },
   { label: "Business visits", href: "/business" },
+  { label: "City routes", href: "/cities" },
   { label: "Guides", href: "/guides" },
   { label: "About us", href: "/#about", native: true },
 ];
@@ -19,9 +21,14 @@ export default function SiteHeader() {
   const [location] = useLocation();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
-  const isBusinessRoute = location === "/business";
-  const primaryLabel = isBusinessRoute ? "Plan a business visit" : "Start your plan";
-  const primaryHref = isBusinessRoute ? "#business-brief" : "/arrival-plan";
+  const businessCitySlug = location.startsWith("/business-cities/") ? location.split("/").filter(Boolean).at(-1) ?? "" : "";
+  const businessCity = cityRouteBySlug(businessCitySlug, "business");
+  const arrivalCitySlug = location.startsWith("/arrivals/") ? location.split("/").filter(Boolean).at(-1) ?? "" : "";
+  const arrivalCity = cityRouteBySlug(arrivalCitySlug, "arrival");
+  const isBusinessRoute = location === "/business" || Boolean(businessCity);
+  const isCityRoute = location === "/cities" || Boolean(arrivalCity) || Boolean(businessCity);
+  const primaryLabel = isBusinessRoute ? "Plan a business visit" : arrivalCity ? `Map my ${arrivalCity.city} arrival` : "Start your plan";
+  const primaryHref = businessCity ? `/business?city=${businessCity.slug}#business-brief` : isBusinessRoute ? "#business-brief" : arrivalCity ? `/arrival-plan?city=${arrivalCity.slug}` : "/arrival-plan";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -48,7 +55,7 @@ export default function SiteHeader() {
     };
   }, [open]);
 
-  const primaryAction = isBusinessRoute
+  const primaryAction = isBusinessRoute && !businessCity
     ? <a href={primaryHref} className="header-cta"><span className="cta-station" aria-hidden="true" />{primaryLabel} <ArrowUpRight size={15} strokeWidth={2.2} /></a>
     : <Link href={primaryHref} className="header-cta"><span className="cta-station" aria-hidden="true" />{primaryLabel} <ArrowUpRight size={15} strokeWidth={2.2} /></Link>;
 
@@ -66,7 +73,7 @@ export default function SiteHeader() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map((item) => {
             const itemRoute = item.href.split("#")[0] || "/";
-            const current = !item.native && itemRoute === location;
+            const current = !item.native && (item.href === "/cities" ? isCityRoute : itemRoute === location);
             return item.native
               ? <a key={item.label} href={item.href} className="nav-link">{item.label}</a>
               : <Link key={item.label} href={item.href} className="nav-link" aria-current={current ? "page" : undefined}>{item.label}</Link>;
@@ -85,13 +92,13 @@ export default function SiteHeader() {
         <nav aria-label="Mobile navigation">
           {navItems.map((item, index) => {
             const itemRoute = item.href.split("#")[0] || "/";
-            const current = !item.native && itemRoute === location;
+            const current = !item.native && (item.href === "/cities" ? isCityRoute : itemRoute === location);
             const content = <><span className="route-number">0{index + 1}</span>{item.label}<ArrowUpRight size={18} /></>;
             return item.native
               ? <a ref={index === 0 ? firstMobileLinkRef : undefined} key={item.label} href={item.href} className="mobile-nav-link">{content}</a>
               : <Link ref={index === 0 ? firstMobileLinkRef : undefined} key={item.label} href={item.href} className="mobile-nav-link" aria-current={current ? "page" : undefined}>{content}</Link>;
           })}
-          {isBusinessRoute ? <a href="#business-brief" className="mobile-nav-plan">Plan a business visit <ArrowUpRight size={18} /></a> : <Link href="/arrival-plan" className="mobile-nav-plan">Map my arrival <ArrowUpRight size={18} /></Link>}
+          {isBusinessRoute && !businessCity ? <a href="#business-brief" className="mobile-nav-plan">Plan a business visit <ArrowUpRight size={18} /></a> : <Link href={primaryHref} className="mobile-nav-plan">{primaryLabel} <ArrowUpRight size={18} /></Link>}
         </nav>
       </div>
     </header>

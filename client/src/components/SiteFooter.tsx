@@ -22,6 +22,7 @@ export default function SiteFooter() {
           <p className="footer-label">Explore</p>
           <Link href="/services">Support by stage <ArrowUpRight size={14} /></Link>
           <Link href="/business">Business visits &amp; shipping <ArrowUpRight size={14} /></Link>
+          <Link href="/cities">City routes <ArrowUpRight size={14} /></Link>
           <Link href="/guides">Arrival guides <ArrowUpRight size={14} /></Link>
           <Link href="/arrival-plan">Start an arrival plan <ArrowUpRight size={14} /></Link>
         </section>

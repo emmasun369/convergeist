@@ -60,7 +60,7 @@ export default function Home() {
           <p className="hero-eyebrow"><span>新旅程</span> A better first chapter in China</p>
           <h1>Your first day in China should feel like an <em>arrival,</em> not a test.</h1>
           <p className="hero-body">ConvergeIST is the peer-led support system for international students finding their feet in China—from the airport gate to your first familiar routine.</p>
-          <div className="hero-actions"><Link href="/arrival-plan" className="button-light">Map my arrival <ArrowUpRight size={17} /></Link><Link href="/services" className="button-quiet">See how support works <ArrowDownRight size={17} /></Link></div>
+          <div className="hero-actions"><Link href="/arrival-plan" className="button-light">Map my arrival <ArrowUpRight size={17} /></Link><Link href="/cities#arrival-cities" className="button-quiet">Choose an arrival city <ArrowDownRight size={17} /></Link></div>
         </div>
         <div className="hero-visual">
           <HeroRouteRibbon />

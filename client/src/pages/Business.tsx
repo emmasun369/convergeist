@@ -3,6 +3,7 @@
  * field guide for people visiting China to meet suppliers and coordinate shipping.
  */
 import { useEffect, useRef } from "react";
+import { Link } from "wouter";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDownRight, ArrowUpRight, Building2, Check, ClipboardCheck, MapPin, PackageCheck, Route as RouteIcon, Ship, UsersRound } from "lucide-react";
@@ -161,7 +162,7 @@ export default function Business() {
             <p className="business-hero-body">For founders, buyers, and teams coming to China to source, visit, and ship. Built from the same ConvergeIST arrival-notebook mindset: make the route between your first meeting and your next decision more visible.</p>
             <div className="business-hero-actions">
               <a href="#business-brief" className="button-light">Plan a business visit <ArrowDownRight size={17} /></a>
-              <a href="#shipping" className="business-quiet-link">Explore the shipping handoff <ArrowUpRight size={17} /></a>
+              <Link href="/cities#business-cities" className="business-quiet-link">Explore business city routes <ArrowUpRight size={17} /></Link>
             </div>
             <div className="business-outcomes" aria-label="What the business route is designed to provide">
               <article className="business-outcome"><span>01</span><div><strong>Meeting sequence</strong><small>Who, where, and what matters first.</small></div></article>

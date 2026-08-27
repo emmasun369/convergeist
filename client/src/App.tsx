@@ -10,6 +10,7 @@ import ArrivalPlan from "./pages/ArrivalPlan";
 import Guides from "./pages/Guides";
 import Business from "./pages/Business";
 import { ArrivalCityRoute, BusinessCityRoute } from "./pages/CityRoute";
+import Cities from "./pages/Cities";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -21,6 +22,7 @@ function Router() {
     <Route path="/business" component={Business} />
     <Route path="/arrivals/:city" component={ArrivalCityRoute} />
     <Route path="/business-cities/:city" component={BusinessCityRoute} />
+    <Route path="/cities" component={Cities} />
     <Route path="/404" component={NotFound} />
     <Route component={NotFound} />
   </Switch>;

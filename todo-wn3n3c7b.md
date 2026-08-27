@@ -50,3 +50,9 @@
 - [x] Build and connect the four business city pages and sourcing atlas actions.
 - [x] Carry selected city context into the Arrival Plan and Business Brief.
 - [x] Verify all city pages, cross-links, responsive layouts, and reduced-motion behavior.
+
+# Full Website Flow Audit
+
+- [x] Inventory every public route, navigation item, card action, anchor, and conversion link.
+- [x] Repair all missing city-route discovery surfaces and incorrectly targeted destinations.
+- [x] Verify every primary user journey on desktop and mobile from discovery to contact.
