@@ -67,3 +67,10 @@
 - [x] Identify the selected controls and route highlights that benefit from tactile elevation.
 - [x] Apply sparse neumorphic styling without weakening button contrast or route hierarchy.
 - [x] Verify desktop and mobile interaction states before delivery.
+
+# Device-Specific Experience Flags
+
+- [x] Define independent mobile and desktop feature flags with documented defaults.
+- [x] Build a touch-first mobile enquiry flow behind its own flag.
+- [x] Build a desktop film treatment behind independent visual and motion flags.
+- [x] Verify feature flags and responsive experiences in enabled and disabled states.

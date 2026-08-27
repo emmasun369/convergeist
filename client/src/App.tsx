@@ -4,6 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { FeatureFlagsProvider } from "./contexts/FeatureFlagsContext";
+import FeatureFlagPanel from "./components/FeatureFlagPanel";
+import MobileEnquiryDock from "./components/MobileEnquiryDock";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import ArrivalPlan from "./pages/ArrivalPlan";
@@ -29,5 +32,5 @@ function Router() {
 }
 
 export default function App() {
-  return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster richColors position="bottom-right" /><Router /></TooltipProvider></ThemeProvider></ErrorBoundary>;
+  return <ErrorBoundary><ThemeProvider defaultTheme="light"><FeatureFlagsProvider><TooltipProvider><Toaster richColors position="bottom-right" /><Router /><MobileEnquiryDock /><FeatureFlagPanel /></TooltipProvider></FeatureFlagsProvider></ThemeProvider></ErrorBoundary>;
 }

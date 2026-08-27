@@ -12,6 +12,8 @@ import SourcingHubMap from "@/components/SourcingHubMap";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import SectionLabel from "@/components/SectionLabel";
+import DesktopFilmTreatment from "@/components/DesktopFilmTreatment";
+import { useFeatureFlags } from "@/contexts/FeatureFlagsContext";
 import { cityRouteBySlug } from "@/lib/cityRoutes";
 
 const tripStages = [
@@ -52,7 +54,9 @@ const tradeNotes = [
 
 export default function Business() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const { flags, isMobile } = useFeatureFlags();
   const selectedCity = cityRouteBySlug(new URLSearchParams(window.location.search).get("city") ?? "", "business");
+  const desktopFilmEnabled = flags.desktopFilmTreatment && !isMobile;
 
   useEffect(() => {
     const page = pageRef.current;
@@ -172,9 +176,8 @@ export default function Business() {
           </div>
 
           <div className="business-hero-visual">
-            <figure className="business-hero-image">
-              <img src="/manus-storage/convergeist-supplier-meeting_94a89879.jpg" alt="Business partners reviewing product details during a supplier meeting in China" />
-              <div className="business-hero-image-tint" />
+            <figure className={`business-hero-image ${desktopFilmEnabled ? "business-hero-image--film" : ""}`}>
+              {desktopFilmEnabled ? <DesktopFilmTreatment /> : <><img src="/manus-storage/convergeist-supplier-meeting_94a89879.jpg" alt="Business partners reviewing product details during a supplier meeting in China" /><div className="business-hero-image-tint" /></>}
               <figcaption><span>01 · 会面笔记</span> You are not here to guess the route.</figcaption>
             </figure>
             <div className="business-route-card">
