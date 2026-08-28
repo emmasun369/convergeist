@@ -64,7 +64,7 @@ export default function Home() {
         </div>
         <div className="hero-visual">
           <HeroRouteRibbon />
-          <div className="hero-image-frame"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663312168274/cgwbxLwOQOaaeqIo.jpg" alt="A traveller being welcomed by a woman waving in an airport arrivals hall" /><div className="hero-image-overlay" /></div>
+          <div className="hero-image-frame"><img src="/media/arrival-airport-welcome-7c7fda136a5f.webp" alt="A traveller being welcomed by a woman waving in an airport arrivals hall" /><div className="hero-image-overlay" /></div>
           <div className="hero-note"><span className="note-pin" /><p><strong>欢迎来到中国</strong><br />A very practical kind of welcome.</p><ArrowUpRight size={16} /></div>
         </div>
         <div className="hero-footnote"><span>Scroll to trace the route</span><i /></div>

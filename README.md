@@ -53,6 +53,12 @@ If the variables are not configured, the analytics script is skipped and the sit
 
 Append `?features=1` to any URL to open browser-local controls for the mobile enquiry flow and desktop Business Visits film treatment. These controls are intended for previews; their settings persist only in the current browser’s local storage.
 
+## Media continuity
+
+The site serves its ConvergeIST-owned images and Business Visits film from content-versioned files under `client/public/media/`. These become same-origin `/media/` assets on Netlify, so the published site does not depend on Manus-hosted media URLs.
+
+The original media files, a JSON inventory, and SHA-256 checksums are stored in the owner’s private Google Drive folder **ConvergeIST — Website Media Archive**. Drive is a recovery archive, not a public CDN; no Drive sharing links are used by the website. To recover an asset, download the matching Drive original, verify it against the archive checksum, restore or regenerate the versioned file under `client/public/media/`, update the source reference if its filename changes, and deploy the new `main` commit through Netlify.
+
 ## Contact
 
 Email [success@airweber.tech](mailto:success@airweber.tech), call [+44 7754 285 455](tel:+447754285455), or follow [@convergeist](https://www.instagram.com/convergeist/).
